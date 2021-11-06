@@ -5,8 +5,6 @@ Web Storage を使用する。
 
 
 
-
-
 ## 参考サイト集
 ### Web Storage
 - [JavaScript Web Storageについて \- Qiita](https://qiita.com/smith-30/items/e200b246a9fc960cb52e)
@@ -14,7 +12,6 @@ Web Storage を使用する。
 
 ### Sass
 - [【vscode】『Live Sass Compiler』の\.cssの出力先変更設定（win10） \- Qiita](https://qiita.com/fukudamax/items/9c974415b0668516c39e)
-
 
 
 ## さまざまな手順
