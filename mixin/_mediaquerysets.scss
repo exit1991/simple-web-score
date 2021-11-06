@@ -1,0 +1,27 @@
+// メディアクエリ用
+$pc: 1024px; // PC
+$tablet: 680px; // タブレット
+$smartphone: 480px;  // スマホ
+
+// サイズの設定
+@mixin setMediaSize($setPC: 1024px, $setTab: 680px, $setSP: 480px) {
+    $pc: $setPC;
+    $tablet: $setTab;
+    $smartphone: $setSP;
+}
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: ($tablet)) {
+    @content;
+  }
+}
+@mixin smartphone {
+  @media (max-width: ($smartphone)) {
+    @content;
+  }
+}

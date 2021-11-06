@@ -1,0 +1,75 @@
+// 外定義のSass取り込み
+@import './mixin/flexboxsets';
+@import './mixin/fonts';
+@import './mixin/animations';
+@import './mixin/mediaquerysets';
+
+//@include font-face('<フォント名>', '＜フォントファイルまでのパス＞', <ウェイト>, <スタイル>, <タイプ>);
+@include font-face('Raleway', './fonts/Raleway-Light.ttf', 300, null, ttf);
+@include font-face('Raleway', './fonts/Raleway-Regular.ttf', 400, null, ttf);
+@include font-face('Raleway', './fonts/Raleway-Medium.ttf', 500, null, ttf);
+@include font-face('Raleway', './fonts/Raleway-Bold.ttf', 700, null, ttf);
+@include font-face('Raleway', './fonts/Raleway-ExtraBold.ttf', 800, null, ttf);
+@include font-face('Raleway', './fonts/Raleway-Black.ttf', 900, null, ttf);
+
+@include font-face('NotoSansJP', './fonts/NotoSansJP-Thin.otf', 100, null, otf);
+@include font-face('NotoSansJP', './fonts/NotoSansJP-Light.otf', 300, null, otf);
+@include font-face('NotoSansJP', './fonts/NotoSansJP-Regular.otf', 400, null, otf);
+@include font-face('NotoSansJP', './fonts/NotoSansJP-Bold.otf', 700, null, otf);
+
+
+// 基本設定
+body {
+    @include useFlexBox(row);
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    padding: 0;
+    background-color: rgb(22, 22, 22);
+}
+
+main {
+    @include useFlexBox(row);
+    // font: 500 15rem 'Raleway', sans-serif;
+    font: 400 15rem 'NotoSansJP', sans-serif;
+    letter-spacing: 2rem;
+    color: #fff;
+}
+
+
+@mixin text-crop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
+    // Configured in Step 1
+    $top-crop: 92;
+    $bottom-crop: 49;
+    $crop-font-size: 321;
+    $crop-line-height: 1.2;
+
+    // Apply values to calculate em-based margins that work with any font size
+    $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+    $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+
+    // Mixin output
+    line-height: $line-height;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+    }
+
+    &::before {
+        margin-bottom: calc(-#{$dynamic-top-crop}em + #{$top-adjustment});
+    }
+
+    &::after {
+        margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
+    }
+}
+
+p {
+    @include text-crop; // Will use default line height of 1.3
+    font-size: 30rem;
+    margin: 0 0 0 16px;
+}

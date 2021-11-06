@@ -1,0 +1,14 @@
+// FlexBoxの指定
+@mixin useFlexBox($dir: row) {
+    @if $dir == column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } @else {
+        @if $dir == row {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+    }
+}

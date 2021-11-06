@@ -1,0 +1,47 @@
+// アニメーション設定用mixin
+@mixin useAnimation($anime-name: fadein, $anime-duration: 1s, $anime-speed-type: ease-out,
+                    $anime-fill-mode: forwards, $anime-delay: 0s, $anime-count: 1) {
+    
+    animation-name: $anime-name;                   // 設定するアニメーションの名前（下記のキーフレームから選ぶ）
+    animation-duration: $anime-duration;           // アニメーションの長さ
+    animation-timing-function: $anime-speed-type;  // 進行スピードのタイプ（直線的、など）
+    animation-fill-mode: $anime-fill-mode;         // 実行の前後にどう対象にスタイルを適用するかを設定
+    animation-delay: $anime-delay;                 // 実行開始の遅延時間設定
+    animation-iteration-count: $anime-count;       // 実行回数（infinityで無限実行）
+}
+
+
+/*************************/
+/*       キーフレーム       */
+/* anime-nameは下記から選ぶ */
+/*   無ければ適宜追加する    */
+/*************************/
+
+
+// フェードイン
+@keyframes fadein {
+    0% {
+       opacity: 0;
+    }
+    100% {
+       opacity: 1;
+    }
+}
+
+// 高さ・位置・透過が変化して線が上から下に動く（スクロール催促用）
+@keyframes pathmove{
+    0%{
+        height:0;
+        top:0;
+        opacity: 0;
+    }
+    30%{
+        height:30px;
+        opacity: 1;
+    }
+    100%{
+        height:0;
+        top:50px;
+        opacity: 0;
+    }
+}
