@@ -50,7 +50,7 @@
 @keyframes fadeinAndDown {
     0% {
        opacity: 0;
-       transform: translateY(-10vh);
+       transform: translateY(-20vh);
     }
     100% {
        opacity: 1;
@@ -60,7 +60,7 @@
 @keyframes fadeinAndUp {
     0% {
        opacity: 0;
-       transform: translateY(10vh);
+       transform: translateY(20vh);
     }
     100% {
        opacity: 1;

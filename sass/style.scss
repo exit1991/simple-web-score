@@ -34,12 +34,14 @@ body {
     width: 100vw;
     margin: auto;
     padding: 0;
+    color: #fff;
     background-color: rgb(22, 22, 22);
+    // background: linear-gradient(180deg, #F0CBA5, #ED6B82);
+    // background: linear-gradient(0deg, #7C539D, #EB5D7E);
 }
 
 main {
     font: 800 15rem 'DINAlternate', sans-serif;
-    color: #fff;
     font-size: 1rem;
     
     // 連打対応：テキスト選択の無効化
@@ -67,17 +69,6 @@ main {
             @include useAnimation(fadeinAndUp, 0.4s, ease-out, forwards, 0s, 1);
         }
     }
-    
-    // &-left, &-right {        
-    //     &.cntUp {
-    //         @include useAnimation(fadeinAndDown, 0.4s, ease-out, forwards, 0s, 1);
-    //     }
-    //     &.cntDown {
-    //         @include useAnimation(fadeinAndUp, 0.4s, ease-out, forwards, 0s, 1);
-    //     }
-    // }
-    
-    
 }
 
 .down-btn {
