@@ -38,67 +38,55 @@ body {
 }
 
 main {
-    // @include useFlexBox(row);
-    // font: 500 15rem 'Raleway', sans-serif;
-    // font: 400 15rem 'NotoSansJP', sans-serif;
     font: 800 15rem 'DINAlternate', sans-serif;
-    letter-spacing: 2rem;
     color: #fff;
+    font-size: 1rem;
+    
+    // 連打対応：テキスト選択の無効化
+    user-select: none;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 2fr 6fr 1fr 6fr 2fr;
-    grid-template-rows: 100vh;
+    grid-template-rows: 5vh 90vh 5vh;
     text-align: center;
     align-items: center;
 }
 
-.points {
-    // @include text-crop; // Will use default line height of 1.3
-    font-size: 20rem;
-    margin: 0;
-    letter-spacing: 0.01em;
+.point {
+    &-left, &-right, &-center {
+        font-size: 20rem;
+        margin: 0;
+        letter-spacing: 0.01em;
+    }
 }
 
-// @mixin text-crop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
-//     // Configured in Step 1
-//     $top-crop: 92;
-//     $bottom-crop: 49;
-//     $crop-font-size: 321;
-//     $crop-line-height: 1.2;
+.down-btn {
+    &-left, &-right {
+        color: rgba($color: #fff, $alpha: 0.3);
+        font-size: 1rem;
+        
+        // CSS で表示文字制御する時用
+        &::before {
+            content: '';
+        }
+    }
+}
 
-//     // Apply values to calculate em-based margins that work with any font size
-//     $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
-//     $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
-
-//     // Mixin output
-//     line-height: $line-height;
-
-//     &::before,
-//     &::after {
-//         content: '';
-//         display: block;
-//         height: 0;
-//         width: 0;
-//     }
-
-//     &::before {
-//         margin-bottom: calc(-#{$dynamic-top-crop}em + #{$top-adjustment});
-//     }
-
-//     &::after {
-//         margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
-//     }
-// }
+.up-btn {
+    &-left, &-right {
+        color: rgba($color: #fff, $alpha: 0.3);
+        font-size: 1rem;
+        
+        // CSS で表示文字制御する時用
+        &::before {
+            content: '';
+        }
+    }
+}
 
 
 
-// .left-point {
-//     text-align: right;
-// }
-// .right-point {
-//     text-align: left;
-// }
 
 
