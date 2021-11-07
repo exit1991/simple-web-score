@@ -59,12 +59,30 @@ main {
         font-size: 20rem;
         margin: 0;
         letter-spacing: 0.01em;
+        
+        &.cntUp {
+            @include useAnimation(fadeinAndDown, 0.4s, ease-out, forwards, 0s, 1);
+        }
+        &.cntDown {
+            @include useAnimation(fadeinAndUp, 0.4s, ease-out, forwards, 0s, 1);
+        }
     }
+    
+    // &-left, &-right {        
+    //     &.cntUp {
+    //         @include useAnimation(fadeinAndDown, 0.4s, ease-out, forwards, 0s, 1);
+    //     }
+    //     &.cntDown {
+    //         @include useAnimation(fadeinAndUp, 0.4s, ease-out, forwards, 0s, 1);
+    //     }
+    // }
+    
+    
 }
 
 .down-btn {
     &-left, &-right {
-        color: rgba($color: #fff, $alpha: 0.3);
+        color: rgba($color: #fff, $alpha: 0.2);
         font-size: 1rem;
         
         // CSS で表示文字制御する時用
@@ -76,7 +94,7 @@ main {
 
 .up-btn {
     &-left, &-right {
-        color: rgba($color: #fff, $alpha: 0.3);
+        color: rgba($color: #fff, $alpha: 0.2);
         font-size: 1rem;
         
         // CSS で表示文字制御する時用

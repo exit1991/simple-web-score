@@ -11,10 +11,16 @@ const upBtnRight  = document.querySelector('.up-btn-right');
 // クリックで +1 を行う
 const points = [pointLeft, pointRight]
 points.forEach(point => {
-    point.innerHTML = 0; // 初期値
+    // 初期化
+    point.innerHTML = 0;
+    point.classList.add('cntUp');
+    setTimeout(() => {point.classList.remove('cntUp');}, 400);
+    
     point.addEventListener('click', () => {
         let nowPoint = point.innerHTML
         point.innerHTML = parseInt(nowPoint) + 1
+        point.classList.add('cntUp');
+        setTimeout(() => {point.classList.remove('cntUp');}, 400);
     });
 });
 
@@ -26,6 +32,8 @@ upBtns.forEach(upBtn => {
     upBtn.addEventListener('click', () => {
         let nowPoint = point.innerHTML
         point.innerHTML = parseInt(nowPoint) + 1
+        point.classList.add('cntUp');
+        setTimeout(() => {point.classList.remove('cntUp');}, 400);
     });
 });
 
@@ -37,6 +45,8 @@ dwnBtns.forEach(dwnBtn => {
     dwnBtn.addEventListener('click', () => {
         let nowPoint = point.innerHTML
         point.innerHTML = parseInt(nowPoint) - 1
+        point.classList.add('cntDown');
+        setTimeout(() => {point.classList.remove('cntDown');}, 400);
     });
 });
 
