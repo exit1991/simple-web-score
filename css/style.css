@@ -183,8 +183,7 @@ body {
   margin: auto;
   padding: 0;
   color: #fff;
-  background: -webkit-gradient(linear, left top, left bottom, from(#F0CBA5), to(#ED6B82));
-  background: linear-gradient(180deg, #F0CBA5, #ED6B82);
+  background-color: #161616;
 }
 
 main {
@@ -261,5 +260,57 @@ main {
 
 .up-btn-left::before, .up-btn-right::before {
   content: '';
+}
+
+.menu-btn {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  width: 6vh;
+  height: 6vh;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: calc(6vh / 6);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.menu-btn, .menu-btn span {
+  display: inline-block;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.menu-btn span:nth-of-type(1) {
+  top: 0;
+}
+
+.menu-btn span:nth-of-type(2) {
+  top: calc((6vh - 1vh) / 2);
+}
+
+.menu-btn span:nth-of-type(3) {
+  bottom: 0;
+}
+
+.menu-btn.active span:nth-of-type(1) {
+  -webkit-transform: translateY(calc((6vh - 1vh) / 2)) rotate(315deg);
+  transform: translateY(calc((6vh - 1vh) / 2)) rotate(315deg);
+}
+
+.menu-btn.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.menu-btn.active span:nth-of-type(3) {
+  -webkit-transform: translateY(calc(calc((6vh - 1vh) / 2) * -1)) rotate(-315deg);
+  transform: translateY(calc(calc((6vh - 1vh) / 2) * -1)) rotate(-315deg);
 }
 /*# sourceMappingURL=style.css.map */

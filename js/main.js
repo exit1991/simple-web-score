@@ -7,6 +7,7 @@ const dwnBtnLeft  = document.querySelector('.down-btn-left');
 const dwnBtnRight = document.querySelector('.down-btn-right');
 const upBtnLeft   = document.querySelector('.up-btn-left');
 const upBtnRight  = document.querySelector('.up-btn-right');
+const menuBtn     = document.querySelector('.menu-btn');
 
 // クリックで +1 を行う
 const points = [pointLeft, pointRight]
@@ -48,6 +49,12 @@ dwnBtns.forEach(dwnBtn => {
         point.classList.add('cntDown');
         setTimeout(() => {point.classList.remove('cntDown');}, 400);
     });
+});
+
+// メニューボタン
+// menuBtn.innerHTML = '';
+menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
 });
 
 
