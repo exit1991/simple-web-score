@@ -18,7 +18,7 @@
 @include font-face('DINAlternate', '../fonts/DIN-Alternate-Bold.ttf', 700, null, ttf);
 
 
-html {
+:root {
     font-size: 1.2vw;
 }
 
@@ -29,9 +29,9 @@ body {
     margin: auto;
     padding: 0;
     color: #fff;
-    background-color: rgb(22, 22, 22);
+    // background-color: rgb(22, 22, 22);
     // background: linear-gradient(180deg, #F0CBA5, #ED6B82);
-    // background: linear-gradient(0deg, #7C539D, #EB5D7E);
+    background: linear-gradient(0deg, #7C539D, #EB5D7E);
 }
 
 main {
@@ -92,10 +92,16 @@ main {
 
 
 
-
+// ----------------------------------
+// メニューボタンのデザインと挙動
+// ----------------------------------
 $menu-btn-height: 6vh;
 $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
-
+@mixin menu-btn-common-val {
+    display: inline-block;
+    transition: all .5s;
+    box-sizing: border-box;
+}
 
 .menu-btn {
     position: absolute;
@@ -104,30 +110,28 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     width: $menu-btn-height;
     height: $menu-btn-height;
     cursor: pointer;
+    @include menu-btn-common-val;
+    
+    span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: calc(#{$menu-btn-height} / 6);
+        background-color: rgba($color: #fff, $alpha: 0.2);
+        border-radius: 4px;
+        @include menu-btn-common-val;
+    }
+    
+    span:nth-of-type(1) {
+        top: 0;
+    }
+    span:nth-of-type(2) {
+        top: $menu-btn-height-half;
+    }
+    span:nth-of-type(3) {
+        bottom: 0;
+    }
 }
-.menu-btn span {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: calc(#{$menu-btn-height} / 6);
-    background-color: rgba($color: #fff, $alpha: 0.2);
-    border-radius: 4px;
-}
-.menu-btn, .menu-btn span {
-    display: inline-block;
-    transition: all .5s;
-    box-sizing: border-box;
-}
-.menu-btn span:nth-of-type(1) {
-    top: 0;
-}
-.menu-btn span:nth-of-type(2) {
-    top: $menu-btn-height-half;
-}
-.menu-btn span:nth-of-type(3) {
-    bottom: 0;
-}
-
 
 .menu-btn.active {
     span:nth-of-type(1) {
