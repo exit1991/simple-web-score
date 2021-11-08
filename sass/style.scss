@@ -29,9 +29,9 @@ body {
     margin: auto;
     padding: 0;
     color: #fff;
-    // background-color: rgb(22, 22, 22);
+    background-color: rgb(22, 22, 22);
     // background: linear-gradient(180deg, #F0CBA5, #ED6B82);
-    background: linear-gradient(0deg, #7C539D, #EB5D7E);
+    // background: linear-gradient(0deg, #7C539D, #EB5D7E);
 }
 
 main {
@@ -45,7 +45,7 @@ main {
 .grid-container {
     display: grid;
     grid-template-columns: 2fr 6fr 1fr 6fr 2fr;
-    grid-template-rows: 5vh 90vh 5vh;
+    grid-template-rows: 10vh 80vh 10vh;
     text-align: center;
     align-items: center;
 }
@@ -69,11 +69,6 @@ main {
     &-left, &-right {
         color: rgba($color: #fff, $alpha: 0.2);
         font-size: 1rem;
-        
-        // CSS で表示文字制御する時用
-        &::before {
-            content: '';
-        }
     }
 }
 
@@ -81,14 +76,8 @@ main {
     &-left, &-right {
         color: rgba($color: #fff, $alpha: 0.2);
         font-size: 1rem;
-        
-        // CSS で表示文字制御する時用
-        &::before {
-            content: '';
-        }
     }
 }
-
 
 
 

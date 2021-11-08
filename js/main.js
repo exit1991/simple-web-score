@@ -30,6 +30,7 @@ const upBtns = [upBtnLeft, upBtnRight]
 upBtns.forEach(upBtn => {
     upBtn.innerHTML = '+'; // 表示する文字
     let point = (upBtn === upBtnLeft) ? pointLeft : pointRight;
+    
     upBtn.addEventListener('click', () => {
         let nowPoint = point.innerHTML
         point.innerHTML = parseInt(nowPoint) + 1
@@ -43,6 +44,7 @@ const dwnBtns = [dwnBtnLeft, dwnBtnRight]
 dwnBtns.forEach(dwnBtn => {
     dwnBtn.innerHTML = '-'; // 表示する文字
     let point = (dwnBtn === dwnBtnLeft) ? pointLeft : pointRight;
+    
     dwnBtn.addEventListener('click', () => {
         let nowPoint = point.innerHTML
         point.innerHTML = parseInt(nowPoint) - 1
@@ -51,8 +53,7 @@ dwnBtns.forEach(dwnBtn => {
     });
 });
 
-// メニューボタン
-// menuBtn.innerHTML = '';
+// メニューボタン切り替え
 menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('active');
 });
