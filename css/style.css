@@ -170,6 +170,8 @@
 
 :root {
   font-size: 1.2vw;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
 }
 
 body {
@@ -178,7 +180,8 @@ body {
   margin: auto;
   padding: 0;
   color: #fff;
-  background-color: #161616;
+  background: -webkit-gradient(linear, left bottom, left top, from(#7C539D), to(#EB5D7E));
+  background: linear-gradient(0deg, #7C539D, #EB5D7E);
 }
 
 main {
@@ -250,12 +253,13 @@ main {
 }
 
 .menu-btn {
-  position: absolute;
+  position: fixed;
   top: 5vh;
   right: 5vw;
   width: 6vh;
   height: 6vh;
   cursor: pointer;
+  z-index: 10;
   display: inline-block;
   -webkit-transition: all .5s;
   transition: all .5s;
@@ -301,5 +305,69 @@ main {
 .menu-btn.active span:nth-of-type(3) {
   -webkit-transform: translateY(calc(calc((6vh - 1vh) / 2) * -1)) rotate(-315deg);
   transform: translateY(calc(calc((6vh - 1vh) / 2) * -1)) rotate(-315deg);
+}
+
+.menu-mask {
+  display: block;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+}
+
+.menu-mask.show {
+  visibility: visible;
+  opacity: 0.7;
+  -webkit-transition: opacity 2s;
+  transition: opacity 2s;
+}
+
+.menu-body {
+  position: fixed;
+  bottom: -5vh;
+  width: 100%;
+  padding: 0 10vw;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity .5s, visibility .5s, bottom 1s;
+  transition: opacity .5s, visibility .5s, bottom 1s;
+  z-index: 4;
+}
+
+.menu-body.show {
+  bottom: 15vh;
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-body ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.menu-body ul li {
+  font-size: max(5rem, 30px);
+  text-transform: uppercase;
+  list-style-type: none;
+  padding: 3rem;
+  margin: 1rem;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+.menu-body ul li:hover {
+  color: #e45f5f;
 }
 /*# sourceMappingURL=style.css.map */

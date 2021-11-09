@@ -18,8 +18,22 @@
 @include font-face('DINAlternate', '../fonts/DIN-Alternate-Bold.ttf', 700, null, ttf);
 
 
+// テーマカラー
+$theme-colors: (
+     'default': rgb(22, 22, 22)
+    ,'peach': linear-gradient(180deg, #F0CBA5, #ED6B82)
+    ,'modern-pink': linear-gradient(0deg, #7C539D, #EB5D7E)
+);
+
+// 現在のテーマカラー
+$set-theme: 'modern-pink';
+
+
+
 :root {
     font-size: 1.2vw;
+    // ダブルタップ対策
+    touch-action: manipulation;
 }
 
 // 基本設定
@@ -29,9 +43,7 @@ body {
     margin: auto;
     padding: 0;
     color: #fff;
-    background-color: rgb(22, 22, 22);
-    // background: linear-gradient(180deg, #F0CBA5, #ED6B82);
-    // background: linear-gradient(0deg, #7C539D, #EB5D7E);
+    background: map-get($theme-colors, $set-theme);
 }
 
 main {
@@ -93,12 +105,14 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 }
 
 .menu-btn {
-    position: absolute;
+    // position: absolute;
+    position: fixed;
     top: 5vh;
     right: 5vw;
     width: $menu-btn-height;
     height: $menu-btn-height;
     cursor: pointer;
+    z-index: 10;
     @include menu-btn-common-val;
     
     span {
@@ -138,7 +152,70 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 
 
 
+// メニュー表示時の画面マスク
+.menu-mask {
+    display: block;
+    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+    
+    // メニュー開いた際
+    &.show {
+        visibility: visible;
+        opacity: 0.7;
+        transition: opacity 2s;
+    }
+}
 
 
+// メニュー本体
+.menu-body {
+    position: fixed;
+    // top: 6rem;
+    // right: -5rem;
+    bottom: -5vh;
+    width: 100%;
+    padding: 0 10vw;
+    opacity: 0;
+    visibility: hidden;
+    // transition: opacity .5s, visibility .5s, right 1s;
+    transition: opacity .5s, visibility .5s, bottom 1s;
+    z-index: 4;
+    
+    &.show {
+        // right: 5rem;
+        bottom: 15vh;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    ul {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    
+    // メニューの１項目
+    ul li {
+        font-size: unquote("max(5rem, 30px)");
+        text-transform: uppercase;
+        list-style-type: none;
+        padding: 3rem;
+        margin: 1rem;
+        transition-property: color;
+        transition-duration: 0.5s;
+        
+        &:hover {
+            color: rgba(228, 95, 95, 1.0);
+        }
+    }
+    
+}
 
 
