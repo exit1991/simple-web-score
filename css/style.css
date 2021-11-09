@@ -180,8 +180,7 @@ body {
   margin: auto;
   padding: 0;
   color: #fff;
-  background: -webkit-gradient(linear, left bottom, left top, from(#7C539D), to(#EB5D7E));
-  background: linear-gradient(0deg, #7C539D, #EB5D7E);
+  background: #161616;
 }
 
 main {

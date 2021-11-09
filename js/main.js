@@ -15,19 +15,25 @@ const btnTheme    = document.querySelector('#btn-theme');
 const btnSet      = document.querySelector('#btn-set');
 
 
+// 汎用アロー関数
+const delayToggleClass = (element, className, delayMSec = 400) => {
+    element.classList.add(className);
+    setTimeout(() => {element.classList.remove(className);}, delayMSec);
+}
+
+
+
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
 points.forEach(point => {
     // 初期化
     point.innerHTML = 0;
-    point.classList.add('cntUp');
-    setTimeout(() => {point.classList.remove('cntUp');}, 400);
+    delayToggleClass(point, 'cntUp', 400);
     
     point.addEventListener('click', () => {
         let nowPoint = point.innerHTML;
         point.innerHTML = parseInt(nowPoint) + 1;
-        point.classList.add('cntUp');
-        setTimeout(() => {point.classList.remove('cntUp');}, 400);
+        delayToggleClass(point, 'cntUp', 400);
     });
 });
 
@@ -40,8 +46,7 @@ upBtns.forEach(upBtn => {
     upBtn.addEventListener('click', () => {
         let nowPoint = point.innerHTML;
         point.innerHTML = parseInt(nowPoint) + 1;
-        point.classList.add('cntUp');
-        setTimeout(() => {point.classList.remove('cntUp');}, 400);
+        delayToggleClass(point, 'cntUp', 400);
     });
 });
 
@@ -54,8 +59,7 @@ dwnBtns.forEach(dwnBtn => {
     dwnBtn.addEventListener('click', () => {
         let nowPoint = point.innerHTML;
         point.innerHTML = parseInt(nowPoint) - 1;
-        point.classList.add('cntDown');
-        setTimeout(() => {point.classList.remove('cntDown');}, 400);
+        delayToggleClass(point, 'cntDown', 400);
     });
 });
 
@@ -66,7 +70,6 @@ const toggleMenu = () => {
     menuBody.classList.toggle('show');
     menuMask.classList.toggle('show');
 }
-
 
 menuBtn.addEventListener('click', () => {
     toggleMenu();
@@ -80,9 +83,11 @@ menuMask.addEventListener('click', () => {
     toggleMenu();
 });
 
+// リセット
 btnReset.addEventListener('click', () => {
-    // リセット
-    points.forEach(point => {point.innerHTML = 0;});
+    points.forEach(point => {
+        point.innerHTML = 0;
+        delayToggleClass(point, 'cntDown', 400);
+    });
 });
-
 
