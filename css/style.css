@@ -180,7 +180,8 @@ body {
   margin: auto;
   padding: 0;
   color: #fff;
-  background: #161616;
+  background: -webkit-gradient(linear, left bottom, left top, from(#7C539D), to(#EB5D7E));
+  background: linear-gradient(0deg, #7C539D, #EB5D7E);
 }
 
 main {
@@ -330,7 +331,7 @@ main {
   position: fixed;
   bottom: -5vh;
   width: 100%;
-  padding: 0 10vw;
+  padding: 0 5vw;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: opacity .5s, visibility .5s, bottom 1s;
@@ -358,15 +359,98 @@ main {
   font-size: max(5rem, 30px);
   text-transform: uppercase;
   list-style-type: none;
-  padding: 3rem;
-  margin: 1rem;
+  padding: 1.5rem;
+  margin: 0;
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.5s;
           transition-duration: 0.5s;
+  -webkit-transform: rotate(-25deg);
+          transform: rotate(-25deg);
 }
 
 .menu-body ul li:hover {
   color: #e45f5f;
+}
+
+.popup-body {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(70vw, 350px);
+  height: 30vh;
+  height: min(40vh, 200px);
+  border-radius: 10px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #fff;
+  color: #000;
+  visibility: hidden;
+  opacity: 0;
+  text-align: center;
+  font-size: min(2.8rem, 16px);
+  -webkit-transition: opacity .5s, visibility .5s;
+  transition: opacity .5s, visibility .5s;
+  z-index: 5;
+}
+
+.popup-body .popup-grid {
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 30% 45% 25%;
+      grid-template-rows: 30% 45% 25%;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'NotoSansJP', sans-serif;
+  font-weight: 300;
+  color: #666;
+}
+
+.popup-body ul {
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.popup-body ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+  height: 100%;
+  background: #673AB7;
+  color: #fff;
+  border: .01rem solid #fff;
+}
+
+.popup-body ul li.btn-yes {
+  border-bottom-left-radius: 10px;
+}
+
+.popup-body ul li.btn-cancel {
+  border-bottom-right-radius: 10px;
+}
+
+.popup-body ul li:hover {
+  background: #7E57C2;
+}
+
+.popup-body.show {
+  opacity: 1;
+  visibility: visible;
 }
 /*# sourceMappingURL=style.css.map */

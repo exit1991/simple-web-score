@@ -26,7 +26,7 @@ $theme-colors: (
 );
 
 // 現在のテーマカラー
-$set-theme: 'default';
+$set-theme: 'modern-pink';
 
 
 
@@ -177,14 +177,11 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 // メニュー本体
 .menu-body {
     position: fixed;
-    // top: 6rem;
-    // right: -5rem;
     bottom: -5vh;
     width: 100%;
-    padding: 0 10vw;
+    padding: 0 5vw;
     opacity: 0;
     visibility: hidden;
-    // transition: opacity .5s, visibility .5s, right 1s;
     transition: opacity .5s, visibility .5s, bottom 1s;
     z-index: 4;
     
@@ -201,15 +198,15 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         flex-wrap: wrap;
     }
     
-    // メニューの１項目
     ul li {
         font-size: unquote("max(5rem, 30px)");
         text-transform: uppercase;
         list-style-type: none;
-        padding: 3rem;
-        margin: 1rem;
+        padding: 1.5rem;
+        margin: 0;
         transition-property: color;
         transition-duration: 0.5s;
+        transform: rotate(-25deg);
         
         &:hover {
             color: rgba(228, 95, 95, 1.0);
@@ -218,4 +215,75 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     
 }
 
+
+.popup-body {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width: unquote("min(70vw, 350px)");
+    height: 30vh;
+    height: unquote("min(40vh, 200px)");
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: #000;
+    visibility: hidden;
+    opacity: 0;
+    text-align: center;
+    font-size: unquote("min(2.8rem, 16px)");
+    transition: opacity .5s, visibility .5s;
+    z-index: 5;
+    
+    .popup-grid {
+        width: 100%;
+        height: 100%;
+        
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 30% 45% 25%;
+        text-align: center;
+        align-items: center;
+        
+        font-family: 'NotoSansJP', sans-serif;
+        font-weight: 300;
+        color: #666;
+        
+    }
+    
+    ul {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    ul li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style-type: none;
+        height: 100%;
+        background: #673AB7;
+        color: #fff;
+        border: .01rem solid #fff;
+        
+        &.btn-yes {
+            border-bottom-left-radius: 10px;
+        }
+        
+        &.btn-cancel {
+            border-bottom-right-radius: 10px;
+        }
+        
+        &:hover {
+            // color: rgba(228, 95, 95, 1.0);
+            background: #7E57C2;
+        }
+    }
+    
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+}
 

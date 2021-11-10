@@ -10,9 +10,17 @@ const upBtnRight  = document.querySelector('.up-btn-right');
 const menuBtn     = document.querySelector('.menu-btn');
 const menuBody    = document.querySelector('.menu-body');
 const menuMask    = document.querySelector('.menu-mask');
+
+// メニュー要素
 const btnReset    = document.querySelector('#btn-reset');
 const btnTheme    = document.querySelector('#btn-theme');
 const btnSet      = document.querySelector('#btn-set');
+const btnInfo     = document.querySelector('#btn-info');
+
+const popupBody   = document.querySelector('.popup-body');
+const btnYes      = document.querySelector('.btn-yes');
+const btnCancel   = document.querySelector('.btn-cancel');
+
 
 
 // 汎用アロー関数
@@ -80,14 +88,34 @@ menuBody.addEventListener('click', () => {
 });
 
 menuMask.addEventListener('click', () => {
-    toggleMenu();
+    menuBtn.classList.remove('active');
+    menuBody.classList.remove('show');
+    menuMask.classList.remove('show');
+    popupBody.classList.remove('show');
 });
 
 // リセット
 btnReset.addEventListener('click', () => {
+    menuMask.classList.toggle('show');
+    popupBody.classList.add('show');
+});
+
+btnYes.addEventListener('click', () => {
+    menuMask.classList.remove('show');
+    popupBody.classList.remove('show');
+    
     points.forEach(point => {
         point.innerHTML = 0;
         delayToggleClass(point, 'cntDown', 400);
     });
 });
+
+btnCancel.addEventListener('click', () => {
+    menuMask.classList.remove('show');
+    popupBody.classList.remove('show');
+});
+
+
+
+
 
