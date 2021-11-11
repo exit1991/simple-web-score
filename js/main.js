@@ -21,6 +21,13 @@ const popupBody   = document.querySelector('.popup-body');
 const btnYes      = document.querySelector('.btn-yes');
 const btnCancel   = document.querySelector('.btn-cancel');
 
+const selthemeBody = document.querySelector('.seltheme-body');
+const themes =  [document.querySelector('.seltheme-body>.default')
+                ,document.querySelector('.seltheme-body>.peach')
+                ,document.querySelector('.seltheme-body>.modern-pink')
+                ];
+
+const body = document.querySelector('body');
 
 
 // 汎用アロー関数
@@ -94,14 +101,16 @@ menuMask.addEventListener('click', () => {
     popupBody.classList.remove('show');
 });
 
-// リセット
+// リセットボタン押下
 btnReset.addEventListener('click', () => {
     menuMask.classList.toggle('show');
+    menuBtn.classList.toggle('active');
     popupBody.classList.add('show');
 });
 
 btnYes.addEventListener('click', () => {
     menuMask.classList.remove('show');
+    menuBtn.classList.remove('active');
     popupBody.classList.remove('show');
     
     points.forEach(point => {
@@ -112,9 +121,38 @@ btnYes.addEventListener('click', () => {
 
 btnCancel.addEventListener('click', () => {
     menuMask.classList.remove('show');
+    menuBtn.classList.remove('active');
     popupBody.classList.remove('show');
 });
 
+
+btnTheme.addEventListener('click', () => {
+    menuMask.classList.remove('show');
+    menuBtn.classList.remove('active');
+    popupBody.classList.remove('show');
+    
+    selthemeBody.classList.add('show');
+    
+});
+
+
+
+themes.forEach(theme => {
+    theme.addEventListener('click', () => {
+        menuMask.classList.remove('show');
+        menuBtn.classList.remove('active');
+        popupBody.classList.remove('show');
+        selthemeBody.classList.remove('show');
+        
+        const themeNames = ['default', 'peach', 'modern-pink']
+        themeNames.forEach(themeName => {
+            body.classList.remove('theme-' + themeName);
+            if (theme.classList.contains(themeName)) {
+                body.classList.add('theme-' + themeName);
+            }
+        });
+    });
+});
 
 
 

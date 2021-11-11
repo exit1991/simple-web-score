@@ -26,7 +26,7 @@ $theme-colors: (
 );
 
 // 現在のテーマカラー
-$set-theme: 'modern-pink';
+$set-theme: 'default';
 
 
 
@@ -44,6 +44,11 @@ body {
     padding: 0;
     color: #fff;
     background: map-get($theme-colors, $set-theme);
+    
+    &.theme-default {background: map-get($theme-colors, 'default');}
+    &.theme-peach {background: map-get($theme-colors, 'peach');}
+    &.theme-modern-pink {background: map-get($theme-colors, 'modern-pink');}
+    
 }
 
 main {
@@ -199,7 +204,8 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     }
     
     ul li {
-        font-size: unquote("max(5rem, 30px)");
+        // font-size: unquote("max(5rem, 30px)");
+        font-size: unquote("min(5rem, 60px)");
         text-transform: uppercase;
         list-style-type: none;
         padding: 1.5rem;
@@ -216,23 +222,34 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 }
 
 
+
+
 .popup-body {
     position:fixed;
-    top: 50%;
-    left: 50%;
+    // top: 50%;
+    // left: 50%;
     width: unquote("min(70vw, 350px)");
-    height: 30vh;
+    // height: 30vh;
     height: unquote("min(40vh, 200px)");
-    border-radius: 10px;
-    transform: translate(-50%, -50%);
-    background: #fff;
+    
+    font-size: unquote("min(2.8rem, 16px)");
+    text-align: center;
     color: #000;
+    box-shadow: 0px 5px 5px 10px rgba($color: #222, $alpha: 0.2);
+    
+    background: #fff;
+    border-radius: 10px;
     visibility: hidden;
     opacity: 0;
-    text-align: center;
-    font-size: unquote("min(2.8rem, 16px)");
-    transition: opacity .5s, visibility .5s;
+    transform: translate(-50%, -50%);
+    // transition: opacity .5s, visibility .5s;
     z-index: 5;
+    
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        @include useAnimation(popupAndFixCenter, 0.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
+    }
     
     .popup-grid {
         width: 100%;
@@ -280,10 +297,76 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         }
     }
     
+}
+
+
+
+
+
+// メニュー表示時の画面マスク
+.seltheme-body {
+    display: block;
+    // background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+    
+    
     &.show {
-        opacity: 1;
         visibility: visible;
+        opacity: 1;
+        transition: opacity .5s;
     }
+    
+    &>div {
+        counter-increment: menu-counter;
+        width: 100%;
+        height: 100%;
+        padding: 0 10%;
+        display: flex;
+        align-items: center;
+    }
+    
+    &:last-child {
+        $menu-count: counter(menu-counter);
+    }
+    
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    // 要素の数だけ均等に分割
+    grid-template-rows: calc(100% / $menu-count);
+    text-align: left;
+    align-items: center;
+    
+    padding: 0;
+    margin: 0;
+    font-size: unquote("min(8rem, 60px)");
+    text-transform: uppercase;
+    
+    &>.default {
+        &::before {content: "default";}
+        background: map-get($theme-colors, default);
+    }
+    &>.peach {
+        &::before {content: "peach";}
+        background: map-get($theme-colors, peach);
+    }
+    &>.modern-pink {
+        &::before {content: "Modern Pink";}
+        background: map-get($theme-colors, modern-pink);
+    }
+    
+    
+    
+    
+    
+    
     
 }
 
