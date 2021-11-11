@@ -1,6 +1,7 @@
 "use strict";
 
 // イベント設定の為の要素の取得
+const body        = document.querySelector('body');
 const pointLeft   = document.querySelector('.point-left');
 const pointRight  = document.querySelector('.point-right');
 const dwnBtnLeft  = document.querySelector('.down-btn-left');
@@ -11,23 +12,36 @@ const menuBtn     = document.querySelector('.menu-btn');
 const menuBody    = document.querySelector('.menu-body');
 const menuMask    = document.querySelector('.menu-mask');
 
-// メニュー要素
+// メニュー関連要素
 const btnReset    = document.querySelector('#btn-reset');
 const btnTheme    = document.querySelector('#btn-theme');
 const btnSet      = document.querySelector('#btn-set');
 const btnInfo     = document.querySelector('#btn-info');
 
+// ポップアップ関連要素
 const popupBody   = document.querySelector('.popup-body');
 const btnYes      = document.querySelector('.btn-yes');
 const btnCancel   = document.querySelector('.btn-cancel');
 
+// テーマ選択関連要素
 const selthemeBody = document.querySelector('.seltheme-body');
-const themes =  [document.querySelector('.seltheme-body>.default')
-                ,document.querySelector('.seltheme-body>.peach')
-                ,document.querySelector('.seltheme-body>.modern-pink')
-                ];
 
-const body = document.querySelector('body');
+// テーマ名定義（★追加修正はここで）
+const themeNames = ['default', 'peach', 'modern-pink'];
+
+// テーマ選択要素の生成
+themeNames.forEach(themeName => {
+    const newElement = document.createElement('div');
+    newElement.classList.add(themeName);
+    selthemeBody.appendChild(newElement);
+});
+
+// テーマ選択要素の取得
+const themes = [];
+themeNames.forEach(themeName => {
+    themes.push(document.querySelector('.seltheme-body>.' + themeName));
+});
+
 
 
 // 汎用アロー関数
@@ -136,7 +150,6 @@ btnTheme.addEventListener('click', () => {
 });
 
 
-
 themes.forEach(theme => {
     theme.addEventListener('click', () => {
         menuMask.classList.remove('show');
@@ -144,7 +157,6 @@ themes.forEach(theme => {
         popupBody.classList.remove('show');
         selthemeBody.classList.remove('show');
         
-        const themeNames = ['default', 'peach', 'modern-pink']
         themeNames.forEach(themeName => {
             body.classList.remove('theme-' + themeName);
             if (theme.classList.contains(themeName)) {
@@ -153,7 +165,5 @@ themes.forEach(theme => {
         });
     });
 });
-
-
 
 

@@ -90,4 +90,41 @@
 }
 
 
+@keyframes slideFromLeft {
+    0% {
+        opacity: 0;
+        // transform: scaleX(0) translateX(-5%);
+        transform: translateX(-100%);
+    }
+    30% {
+        // transform: scaleX(1) translateX(0);
+        transform: translateX(0);
+    }
+    100% {
+        // transform: scaleX(1) translateX(0);
+        transform: translateX(0);
+    }
+    30%, 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideToRight {
+    0% {
+        opacity: 1;
+        // transform: scaleX(0) translateX(-5%);
+        transform: translateX(0);
+    }
+    30% {
+        // transform: scaleX(1) translateX(0);
+        transform: translateX(-100%);
+    }
+    100% {
+        // transform: scaleX(1) translateX(0);
+        transform: translateX(-100%);
+    }
+    30%, 100% {
+        opacity: 0;
+    }
+}
 
