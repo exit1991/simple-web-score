@@ -9,42 +9,42 @@
     <script src="js/main.js" defer></script>
 </head>
 <body>
-    <main>
-        <div class="menu-container">
-            <div class="menu-mask">
-            </div>
-            <div class="menu-body">
+    <div class="menu-container">
+        <div class="menu-mask">
+        </div>
+        <div class="menu-body">
+            <ul>
+                <li id="btn-reset">Reset</li>
+                <li id="btn-theme">Theme</li>
+                <li id="btn-set">Set</li>
+                <li id="btn-info">Info</li>
+            </ul>
+        </div>
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="popup-container">
+        <div class="popup-body">
+            <div class="popup-grid">
+                <div class="popup-icon">！</div>
+                <div class="popup-msg">
+                    <div lang="ja">リセットしてもよろしいですか？</div>
+                </div>
                 <ul>
-                    <li id="btn-reset">Reset</li>
-                    <li id="btn-theme">Theme</li>
-                    <li id="btn-set">Set</li>
-                    <li id="btn-info">Info</li>
+                    <li class="btn-yes">はい</li>
+                    <li class="btn-cancel">キャンセル</li>
                 </ul>
             </div>
-            <div class="menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
-        <div class="popup-container">
-            <div class="popup-body">
-                <div class="popup-grid">
-                    <div class="popup-icon">！</div>
-                    <div class="popup-msg">
-                        <div lang="ja">リセットしてもよろしいですか？</div>
-                    </div>
-                    <ul>
-                        <li class="btn-yes">はい</li>
-                        <li class="btn-cancel">キャンセル</li>
-                    </ul>
-                </div>
-            </div>
+    </div>
+    <div class="seltheme-container">
+        <div class="seltheme-body">
         </div>
-        <div class="seltheme-container">
-            <div class="seltheme-body">
-            </div>
-        </div>
+    </div>
+    <main>
         <div class="grid-container">
             <div class="space"></div>
             <div class="up-btn-left"></div>

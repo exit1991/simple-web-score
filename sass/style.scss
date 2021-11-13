@@ -42,22 +42,18 @@ body {
     margin: auto;
     padding: 0;
     color: #fff;
-    background: map-get($theme-colors, $set-theme);
+    font: 800 15rem 'DINAlternate', sans-serif;
+    font-size: 1rem;
+    user-select: none; // 連打対応：テキスト選択の無効化
     
+    // 背景設定
+    background: map-get($theme-colors, $set-theme);
     @each $theme-name, $theme-color in $theme-colors {
         &.theme-#{$theme-name} {background: $theme-color}
     }
     
 }
 
-
-main {
-    font: 800 15rem 'DINAlternate', sans-serif;
-    font-size: 1rem;
-    
-    // 連打対応：テキスト選択の無効化
-    user-select: none;
-}
 
 .grid-container {
     display: grid;
@@ -226,10 +222,7 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 
 .popup-body {
     position:fixed;
-    // top: 50%;
-    // left: 50%;
     width: unquote("min(70vw, 350px)");
-    // height: 30vh;
     height: unquote("min(40vh, 200px)");
     
     font-size: unquote("min(2.8rem, 16px)");
@@ -242,7 +235,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     visibility: hidden;
     opacity: 0;
     transform: translate(-50%, -50%);
-    // transition: opacity .5s, visibility .5s;
     z-index: 5;
     
     &.show {
@@ -304,15 +296,12 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 // テーマ選択
 .seltheme-body {
     display: block;
-    // background: #000;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
-    // visibility: hidden;
-    
     padding: 0;
     margin: 0;
     font-size: unquote("min(8rem, 60px)");

@@ -298,6 +298,12 @@ body {
   margin: auto;
   padding: 0;
   color: #fff;
+  font: 800 15rem 'DINAlternate', sans-serif;
+  font-size: 1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   background: #161616;
 }
 
@@ -313,15 +319,6 @@ body.theme-peach {
 body.theme-modern-pink {
   background: -webkit-gradient(linear, left bottom, left top, from(#7C539D), to(#EB5D7E));
   background: linear-gradient(0deg, #7C539D, #EB5D7E);
-}
-
-main {
-  font: 800 15rem 'DINAlternate', sans-serif;
-  font-size: 1rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 .grid-container {
