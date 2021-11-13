@@ -45,25 +45,44 @@ themeNames.forEach(themeName => {
 
 
 // 汎用アロー関数
-const delayToggleClass = (element, className, delayMSec = 400) => {
-    element.classList.add(className);
-    setTimeout(() => {element.classList.remove(className);}, delayMSec);
+
+const delayToggleClass = (elem, clsName, delayMSec = 400) => {
+    elem.classList.add(clsName);
+    setTimeout(() => {elem.classList.remove(clsName);}, delayMSec);
 }
+
+const chgType = {
+    up: 1,
+    down: -1
+};
+
+const changePoint = (clkElem, ptElem, chgType) => {
+    let clsName = '';
+    switch (chgType) {
+        case 1:
+            clsName = 'cntUp';
+            break;
+        case -1:
+            clsName = 'cntDown';
+            break;
+        default:
+            break;
+    }
+    clkElem.addEventListener('click', () => {
+        let nowPoint = ptElem.innerHTML;
+        ptElem.innerHTML = parseInt(nowPoint) + chgType;
+        delayToggleClass(ptElem, clsName, 400);
+    });
+};
 
 
 
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
 points.forEach(point => {
-    // 初期化
-    point.innerHTML = 0;
+    point.innerHTML = 0; // 初期化
     delayToggleClass(point, 'cntUp', 400);
-    
-    point.addEventListener('click', () => {
-        let nowPoint = point.innerHTML;
-        point.innerHTML = parseInt(nowPoint) + 1;
-        delayToggleClass(point, 'cntUp', 400);
-    });
+    changePoint(point, point, chgType.up);
 });
 
 // 画面上部のボタンをクリックで +1 を行う
@@ -71,12 +90,7 @@ const upBtns = [upBtnLeft, upBtnRight];
 upBtns.forEach(upBtn => {
     upBtn.innerHTML = '+'; // 表示する文字
     let point = (upBtn === upBtnLeft) ? pointLeft : pointRight;
-    
-    upBtn.addEventListener('click', () => {
-        let nowPoint = point.innerHTML;
-        point.innerHTML = parseInt(nowPoint) + 1;
-        delayToggleClass(point, 'cntUp', 400);
-    });
+    changePoint(upBtn, point, chgType.up);
 });
 
 // 画面下部のボタンをクリックで -1 を行う
@@ -84,12 +98,7 @@ const dwnBtns = [dwnBtnLeft, dwnBtnRight];
 dwnBtns.forEach(dwnBtn => {
     dwnBtn.innerHTML = '-'; // 表示する文字
     let point = (dwnBtn === dwnBtnLeft) ? pointLeft : pointRight;
-    
-    dwnBtn.addEventListener('click', () => {
-        let nowPoint = point.innerHTML;
-        point.innerHTML = parseInt(nowPoint) - 1;
-        delayToggleClass(point, 'cntDown', 400);
-    });
+    changePoint(dwnBtn, point, chgType.down);
 });
 
 
@@ -139,16 +148,12 @@ btnCancel.addEventListener('click', () => {
     popupBody.classList.remove('show');
 });
 
-
 btnTheme.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
     popupBody.classList.remove('show');
-    
     selthemeBody.classList.add('show');
-    
 });
-
 
 themes.forEach(theme => {
     theme.addEventListener('click', () => {
