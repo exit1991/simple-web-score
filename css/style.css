@@ -321,6 +321,10 @@ body.theme-modern-pink {
   background: linear-gradient(0deg, #7C539D, #EB5D7E);
 }
 
+body.theme-plum-plate {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
 .grid-container {
   display: -ms-grid;
   display: grid;
@@ -687,5 +691,13 @@ body.theme-modern-pink {
 
 .seltheme-body > .modern-pink::before {
   content: "modern-pink";
+}
+
+.seltheme-body > .plum-plate {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.seltheme-body > .plum-plate::before {
+  content: "plum-plate";
 }
 /*# sourceMappingURL=style.css.map */
