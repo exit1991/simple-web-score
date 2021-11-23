@@ -296,33 +296,37 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 
 // テーマ選択
 .seltheme-body {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: left;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: auto; // 要素がはみ出した際にスクロールバーを表示
     opacity: 0;
     padding: 0;
     margin: 0;
     font-size: unquote("min(8rem, 60px)");
     text-transform: uppercase;
-    z-index: 10;
+    z-index: 0;
     transform: translateX(-100%);
     @include useAnimation(slideToRight, 2.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
-    
+
     
     &.show {
         // visibility: visible;
         opacity: 1;
+        z-index: 10;
         @include useAnimation(slideFromLeft, 2.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
     }
     
     &>div {
-        counter-increment: menu-counter;
         width: 100%;
         height: 100%;
-        padding: 0 10%;
+        padding: 0.5rem 10%;
         display: flex;
         align-items: center;
         &:hover {
@@ -330,15 +334,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         }
     }
     
-    &:last-child {
-        $menu-count: counter(menu-counter);
-    }
-    
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: calc(100% / $menu-count); // 要素の数だけ均等に分割
-    text-align: left;
-    align-items: center;
     
     @each $theme-name, $theme-color in $theme-colors {
         &>.#{$theme-name} {

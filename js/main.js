@@ -27,7 +27,11 @@ const btnCancel   = document.querySelector('.btn-cancel');
 const selthemeBody = document.querySelector('.seltheme-body');
 
 // テーマ名定義（★追加修正はここで行う）
-const themeNames = ['default', 'peach', 'modern-pink', 'plum-plate'];
+const themeNames = ['default'
+                    ,'peach'
+                    ,'modern-pink'
+                    ,'plum-plate'
+                    ];
 
 // テーマ選択要素の生成と格納
 const themes = [];
