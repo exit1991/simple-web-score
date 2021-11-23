@@ -18,7 +18,7 @@
 @include font-face('DINAlternate', '../fonts/DIN-Alternate-Bold.ttf', 700, null, ttf);
 
 
-// テーマ定義（★追加修正はここで）
+// テーマ定義（★追加修正はここで行う）
 $theme-colors: (
      'default': rgb(22, 22, 22)
     ,'peach': linear-gradient(180deg, #F0CBA5, #ED6B82)

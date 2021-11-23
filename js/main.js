@@ -26,22 +26,16 @@ const btnCancel   = document.querySelector('.btn-cancel');
 // テーマ選択関連要素
 const selthemeBody = document.querySelector('.seltheme-body');
 
-// テーマ名定義（★追加修正はここで）
+// テーマ名定義（★追加修正はここで行う）
 const themeNames = ['default', 'peach', 'modern-pink', 'plum-plate'];
 
-// テーマ選択要素の生成
+// テーマ選択要素の生成と格納
+const themes = [];
 themeNames.forEach(themeName => {
     const newElement = document.createElement('div');
     newElement.classList.add(themeName);
-    selthemeBody.appendChild(newElement);
+    themes.push(selthemeBody.appendChild(newElement));
 });
-
-// テーマ選択要素の取得
-const themes = [];
-themeNames.forEach(themeName => {
-    themes.push(document.querySelector('.seltheme-body>.' + themeName));
-});
-
 
 
 // 汎用アロー関数
