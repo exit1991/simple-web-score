@@ -78,7 +78,7 @@ const changePoint = (clkElem, ptElem, chgType) => {
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
 points.forEach(point => {
-    point.innerHTML = 0; // 初期化
+    point.innerHTML = 8888; // 初期化
     delayToggleClass(point, 'cntUp', 400);
     changePoint(point, point, chgType.up);
 });
@@ -169,4 +169,48 @@ themes.forEach(theme => {
     });
 });
 
+
+
+
+// const nowLeftPointSize = parseFloat(window.getComputedStyle(pointLeft, null).getPropertyValue('font-size'));
+const nowLeftStrCnt = pointLeft.textContent.length;
+const nowRightStrCnt = pointRight.textContent.length;
+
+// console.log(nowLeftPointSize);
+// console.log(nowLeftStrCnt);
+
+// const newSize = nowLeftPointSize * 2.5 + 'px';
+// console.log(newSize);
+// pointLeft.style.fontSize = newSize;
+
+// pointLeft.style.fontSize = '10rem';
+// pointLeft.style.fontSize = '20rem';
+
+
+// 20 - 6 
+// 20 - 9
+// 20 - 10.5
+
+
+switch (nowLeftStrCnt) {
+    case 4:
+        pointLeft.style.fontSize = '14rem';
+        break;
+    case 5:
+        pointLeft.style.fontSize = '11rem';
+        break;
+    default:
+        break;
+}
+
+switch (nowRightStrCnt) {
+    case 4:
+        pointRight.style.fontSize = '14rem';
+        break;
+    case 5:
+        pointRight.style.fontSize = '11rem';
+        break;
+    default:
+        break;
+}
 
