@@ -78,7 +78,7 @@ const changePoint = (clkElem, ptElem, chgType) => {
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
 points.forEach(point => {
-    point.innerHTML = 8888; // 初期化
+    point.innerHTML = 8888888888; // 初期化
     delayToggleClass(point, 'cntUp', 400);
     changePoint(point, point, chgType.up);
 });
@@ -190,27 +190,58 @@ const nowRightStrCnt = pointRight.textContent.length;
 // 20 - 6 
 // 20 - 9
 // 20 - 10.5
+// 20 - 11.25
 
 
-switch (nowLeftStrCnt) {
-    case 4:
-        pointLeft.style.fontSize = '14rem';
-        break;
-    case 5:
-        pointLeft.style.fontSize = '11rem';
-        break;
-    default:
-        break;
+// 計算テスト
+// const testVal = 10000;
+// console.log(6 * (2 - Math.pow(0.5, testVal - 4)));
+
+
+const digitToRemSize = digitVal => {
+    return 20 - (6 * (2 - Math.pow(0.5, digitVal - 4)));
+};
+
+if (nowLeftStrCnt >= 4) {
+    pointLeft.style.fontSize = digitToRemSize(nowLeftStrCnt) + 'rem';
+}
+if (nowRightStrCnt >= 4) {
+    pointRight.style.fontSize = digitToRemSize(nowRightStrCnt) + 'rem';
 }
 
-switch (nowRightStrCnt) {
-    case 4:
-        pointRight.style.fontSize = '14rem';
-        break;
-    case 5:
-        pointRight.style.fontSize = '11rem';
-        break;
-    default:
-        break;
-}
+
+
+// switch (nowLeftStrCnt) {
+//     case 4:
+//         pointLeft.style.fontSize = '14rem';
+//         break;
+//     case 5:
+//         pointLeft.style.fontSize = '11rem';
+//         break;
+//     case 6:
+//         pointLeft.style.fontSize = '9.5rem';
+//         break;
+//     case 7:
+//         pointLeft.style.fontSize = '8.75rem';
+//         break;
+//     default:
+//         break;
+// }
+
+// switch (nowRightStrCnt) {
+//     case 4:
+//         pointRight.style.fontSize = '14rem';
+//         break;
+//     case 5:
+//         pointRight.style.fontSize = '11rem';
+//         break;
+//     case 6:
+//         pointRight.style.fontSize = '9.5rem';
+//         break;
+//     case 7:
+//         pointRight.style.fontSize = '8.75rem';
+//         break;
+//     default:
+//         break;
+// }
 
