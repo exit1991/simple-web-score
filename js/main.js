@@ -1,9 +1,16 @@
 "use strict";
 
+// debug用ポイント初期値
+const startPoint = 999;
+
+// 初期値定義
+const defPointSize = '20rem';
+
 // イベント設定の為の要素の取得
 const body        = document.querySelector('body');
 const pointLeft   = document.querySelector('.point-left');
 const pointRight  = document.querySelector('.point-right');
+const pointCenter  = document.querySelector('.point-center');
 const dwnBtnLeft  = document.querySelector('.down-btn-left');
 const dwnBtnRight = document.querySelector('.down-btn-right');
 const upBtnLeft   = document.querySelector('.up-btn-left');
@@ -42,16 +49,68 @@ themeNames.forEach(themeName => {
 });
 
 
-// 汎用アロー関数
+
+/* ====================
+    汎用オブジェクト
+==================== */
+
+const chgType = {up: 1, down: -1};
+
+
+/* ====================
+       汎用関数
+==================== */
+
+/**
+ * rem単位をpx単位に変換する
+ * @param rem rem単位のサイズを表す文字列
+ * @return px単位のサイズを表す数値
+ */
+function convertRemToPx(rem) {
+    const fontSize = getComputedStyle(document.documentElement).fontSize;
+    return rem * parseFloat(fontSize);
+}
+
+/**
+ * px単位をrem単位に変換する
+ * @param px px単位のサイズを表す文字列
+ * @return rem単位のサイズを表す数値
+ */
+function convertPxToRem(px) {
+    const fontSize = getComputedStyle(document.documentElement).fontSize;
+    return px / parseFloat(fontSize);
+}
+
+
+
+
+/* ====================
+    汎用アロー関数
+==================== */
+
+const aryMax = (a, b) => Math.max(a, b);
+const aryMin = (a, b) => Math.min(a, b);
 
 const delayToggleClass = (elem, clsName, delayMSec = 400) => {
     elem.classList.add(clsName);
     setTimeout(() => {elem.classList.remove(clsName);}, delayMSec);
-}
+};
 
-const chgType = {
-    up: 1,
-    down: -1
+const digitToRemSize = digitVal => {
+    return 20 - (6 * (2 - Math.pow(0.5, digitVal - 4)));
+};
+
+const resizePoint = () => {
+    const points = [pointLeft, pointRight];
+    const pointSizes = [];
+    points.forEach(point => {
+        const nowPointStrCnt = point.textContent.length;
+        const newPointSize = nowPointStrCnt >= 4 ? digitToRemSize(nowPointStrCnt) + 'rem' : defPointSize;
+        point.style.fontSize = newPointSize;
+        pointSizes.push(parseFloat(newPointSize));
+    });
+    const maxPointSize = pointSizes.reduce(aryMax);
+    pointCenter.style.fontSize = maxPointSize + 'rem';
 };
 
 const changePoint = (clkElem, ptElem, chgType) => {
@@ -70,15 +129,24 @@ const changePoint = (clkElem, ptElem, chgType) => {
         let nowPoint = ptElem.innerHTML;
         ptElem.innerHTML = parseInt(nowPoint) + chgType;
         delayToggleClass(ptElem, clsName, 400);
+        resizePoint();
     });
 };
 
+
+/* ====================
+    処理定義
+==================== */
+
+window.addEventListener('load', () => {
+    resizePoint();
+});
 
 
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
 points.forEach(point => {
-    point.innerHTML = 8888; // 初期化
+    point.innerHTML = startPoint; // 初期化
     delayToggleClass(point, 'cntUp', 400);
     changePoint(point, point, chgType.up);
 });
@@ -172,78 +240,7 @@ themes.forEach(theme => {
 
 
 
-// const nowLeftPointSize = parseFloat(window.getComputedStyle(pointLeft, null).getPropertyValue('font-size'));
-const nowLeftStrCnt = pointLeft.textContent.length;
-const nowRightStrCnt = pointRight.textContent.length;
-
-// console.log(nowLeftPointSize);
-// console.log(nowLeftStrCnt);
-
-// const newSize = nowLeftPointSize * 2.5 + 'px';
-// console.log(newSize);
-// pointLeft.style.fontSize = newSize;
-
-// pointLeft.style.fontSize = '10rem';
-// pointLeft.style.fontSize = '20rem';
-
-
-// 20 - 6 
-// 20 - 9
-// 20 - 10.5
-// 20 - 11.25
-
-
-// 計算テスト
-// const testVal = 10000;
-// console.log(6 * (2 - Math.pow(0.5, testVal - 4)));
-
-
-const digitToRemSize = digitVal => {
-    return 20 - (6 * (2 - Math.pow(0.5, digitVal - 4)));
-};
-
-if (nowLeftStrCnt >= 4) {
-    const computedSize = digitToRemSize(nowLeftStrCnt);
-    pointLeft.style.fontSize = computedSize + 'rem';
-}
-if (nowRightStrCnt >= 4) {
-    const computedSize = digitToRemSize(nowRightStrCnt);
-    pointRight.style.fontSize = computedSize + 'rem';
-}
 
 
 
-// switch (nowLeftStrCnt) {
-//     case 4:
-//         pointLeft.style.fontSize = '14rem';
-//         break;
-//     case 5:
-//         pointLeft.style.fontSize = '11rem';
-//         break;
-//     case 6:
-//         pointLeft.style.fontSize = '9.5rem';
-//         break;
-//     case 7:
-//         pointLeft.style.fontSize = '8.75rem';
-//         break;
-//     default:
-//         break;
-// }
-
-// switch (nowRightStrCnt) {
-//     case 4:
-//         pointRight.style.fontSize = '14rem';
-//         break;
-//     case 5:
-//         pointRight.style.fontSize = '11rem';
-//         break;
-//     case 6:
-//         pointRight.style.fontSize = '9.5rem';
-//         break;
-//     case 7:
-//         pointRight.style.fontSize = '8.75rem';
-//         break;
-//     default:
-//         break;
-// }
 
