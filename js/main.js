@@ -78,7 +78,7 @@ const changePoint = (clkElem, ptElem, chgType) => {
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
 points.forEach(point => {
-    point.innerHTML = 8888888888; // 初期化
+    point.innerHTML = 8888; // 初期化
     delayToggleClass(point, 'cntUp', 400);
     changePoint(point, point, chgType.up);
 });
@@ -203,10 +203,12 @@ const digitToRemSize = digitVal => {
 };
 
 if (nowLeftStrCnt >= 4) {
-    pointLeft.style.fontSize = digitToRemSize(nowLeftStrCnt) + 'rem';
+    const computedSize = digitToRemSize(nowLeftStrCnt);
+    pointLeft.style.fontSize = computedSize + 'rem';
 }
 if (nowRightStrCnt >= 4) {
-    pointRight.style.fontSize = digitToRemSize(nowRightStrCnt) + 'rem';
+    const computedSize = digitToRemSize(nowRightStrCnt);
+    pointRight.style.fontSize = computedSize + 'rem';
 }
 
 
