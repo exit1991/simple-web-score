@@ -1,9 +1,16 @@
 "use strict";
 
+// debug用ポイント初期値
+const startPoint = 999;
+
+// 初期値定義
+const defPointSize = '20rem';
+
 // イベント設定の為の要素の取得
 const body        = document.querySelector('body');
 const pointLeft   = document.querySelector('.point-left');
 const pointRight  = document.querySelector('.point-right');
+const pointCenter = document.querySelector('.point-center');
 const dwnBtnLeft  = document.querySelector('.down-btn-left');
 const dwnBtnRight = document.querySelector('.down-btn-right');
 const upBtnLeft   = document.querySelector('.up-btn-left');
@@ -26,34 +33,84 @@ const btnCancel   = document.querySelector('.btn-cancel');
 // テーマ選択関連要素
 const selthemeBody = document.querySelector('.seltheme-body');
 
-// テーマ名定義（★追加修正はここで）
-const themeNames = ['default', 'peach', 'modern-pink', 'plum-plate'];
+// テーマ名定義（★追加修正はここで行う）
+const themeNames = ['default'
+                    ,'peach'
+                    ,'modern-pink'
+                    ,'plum-plate'
+                    ];
 
-// テーマ選択要素の生成
+// テーマ選択要素の生成と格納
+const themes = [];
 themeNames.forEach(themeName => {
     const newElement = document.createElement('div');
     newElement.classList.add(themeName);
-    selthemeBody.appendChild(newElement);
-});
-
-// テーマ選択要素の取得
-const themes = [];
-themeNames.forEach(themeName => {
-    themes.push(document.querySelector('.seltheme-body>.' + themeName));
+    themes.push(selthemeBody.appendChild(newElement));
 });
 
 
 
-// 汎用アロー関数
+/* ====================
+    汎用オブジェクト
+==================== */
+
+const chgType = {up: 1, down: -1};
+
+
+/* ====================
+       汎用関数
+==================== */
+
+/**
+ * rem単位をpx単位に変換する
+ * @param rem rem単位のサイズを表す文字列
+ * @return px単位のサイズを表す数値
+ */
+function convertRemToPx(rem) {
+    const fontSize = getComputedStyle(document.documentElement).fontSize;
+    return rem * parseFloat(fontSize);
+}
+
+/**
+ * px単位をrem単位に変換する
+ * @param px px単位のサイズを表す文字列
+ * @return rem単位のサイズを表す数値
+ */
+function convertPxToRem(px) {
+    const fontSize = getComputedStyle(document.documentElement).fontSize;
+    return px / parseFloat(fontSize);
+}
+
+
+
+
+/* ====================
+    汎用アロー関数
+==================== */
+
+const aryMax = (a, b) => Math.max(a, b);
+const aryMin = (a, b) => Math.min(a, b);
 
 const delayToggleClass = (elem, clsName, delayMSec = 400) => {
     elem.classList.add(clsName);
     setTimeout(() => {elem.classList.remove(clsName);}, delayMSec);
-}
+};
 
-const chgType = {
-    up: 1,
-    down: -1
+const digitToRemSize = digitVal => {
+    return 20 - (6 * (2 - Math.pow(0.5, digitVal - 4)));
+};
+
+const resizePoint = () => {
+    const points = [pointLeft, pointRight];
+    const pointSizes = [];
+    points.forEach(point => {
+        const nowPointStrCnt = point.textContent.length;
+        const newPointSize = nowPointStrCnt >= 4 ? digitToRemSize(nowPointStrCnt) + 'rem' : defPointSize;
+        point.style.fontSize = newPointSize;
+        pointSizes.push(parseFloat(newPointSize));
+    });
+    const maxPointSize = pointSizes.reduce(aryMax);
+    pointCenter.style.fontSize = maxPointSize + 'rem';
 };
 
 const changePoint = (clkElem, ptElem, chgType) => {
@@ -72,15 +129,24 @@ const changePoint = (clkElem, ptElem, chgType) => {
         let nowPoint = ptElem.innerHTML;
         ptElem.innerHTML = parseInt(nowPoint) + chgType;
         delayToggleClass(ptElem, clsName, 400);
+        resizePoint();
     });
 };
 
+
+/* ====================
+    処理定義
+==================== */
+
+window.addEventListener('load', () => {
+    resizePoint();
+});
 
 
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
 points.forEach(point => {
-    point.innerHTML = 0; // 初期化
+    point.innerHTML = startPoint; // 初期化
     delayToggleClass(point, 'cntUp', 400);
     changePoint(point, point, chgType.up);
 });
@@ -170,5 +236,11 @@ themes.forEach(theme => {
         });
     });
 });
+
+
+
+
+
+
 
 
