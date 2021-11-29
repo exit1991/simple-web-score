@@ -505,7 +505,7 @@ body.theme-plum-plate {
   color: #e45f5f;
 }
 
-.popup-body {
+.popup {
   position: fixed;
   width: min(70vw, 350px);
   height: min(40vh, 200px);
@@ -523,7 +523,7 @@ body.theme-plum-plate {
   z-index: 5;
 }
 
-.popup-body.show {
+.reset-pu.show {
   opacity: 1;
   visibility: visible;
   -webkit-animation-name: popupAndFixCenter;
@@ -540,7 +540,7 @@ body.theme-plum-plate {
           animation-iteration-count: 1;
 }
 
-.popup-body .popup-grid {
+.reset-pu .popup-grid {
   width: 100%;
   height: 100%;
   display: -ms-grid;
@@ -558,7 +558,7 @@ body.theme-plum-plate {
   color: #666;
 }
 
-.popup-body ul {
+.reset-pu ul {
   height: 100%;
   display: -ms-grid;
   display: grid;
@@ -566,7 +566,7 @@ body.theme-plum-plate {
       grid-template-columns: 1fr 1fr;
 }
 
-.popup-body ul li {
+.reset-pu ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -583,37 +583,19 @@ body.theme-plum-plate {
   border: .01rem solid #fff;
 }
 
-.popup-body ul li.btn-yes {
+.reset-pu ul li.btn-yes {
   border-bottom-left-radius: 10px;
 }
 
-.popup-body ul li.btn-cancel {
+.reset-pu ul li.btn-cancel {
   border-bottom-right-radius: 10px;
 }
 
-.popup-body ul li:hover {
+.reset-pu ul li:hover {
   background: #7E57C2;
 }
 
-.popup-setpoint-body {
-  position: fixed;
-  width: min(70vw, 350px);
-  height: min(40vh, 200px);
-  font-size: min(2.8rem, 16px);
-  text-align: center;
-  color: #000;
-  -webkit-box-shadow: 0px 5px 5px 10px rgba(34, 34, 34, 0.2);
-          box-shadow: 0px 5px 5px 10px rgba(34, 34, 34, 0.2);
-  background: #fff;
-  border-radius: 10px;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  z-index: 5;
-}
-
-.popup-setpoint-body.show {
+.set-pnt-pu.show {
   opacity: 1;
   visibility: visible;
   -webkit-animation-name: popupAndFixCenter;
@@ -630,7 +612,7 @@ body.theme-plum-plate {
           animation-iteration-count: 1;
 }
 
-.popup-setpoint-body .popup-grid {
+.set-pnt-pu .popup-grid {
   width: 100%;
   height: 100%;
   display: -ms-grid;
@@ -648,13 +630,13 @@ body.theme-plum-plate {
   color: #666;
 }
 
-.popup-setpoint-body .ipts {
+.set-pnt-pu .ipts {
   -ms-flex-item-align: start;
       align-self: flex-start;
   text-align: right;
 }
 
-.popup-setpoint-body .ipts .ipt {
+.set-pnt-pu .ipts .ipt {
   text-align: center;
   font-family: 'DINAlternate', sans-serif;
   font-weight: 700;
@@ -662,7 +644,7 @@ body.theme-plum-plate {
   font-size: min(3rem, 24px);
 }
 
-.popup-setpoint-body .btns {
+.set-pnt-pu .btns {
   height: 100%;
   display: -ms-grid;
   display: grid;
@@ -670,7 +652,7 @@ body.theme-plum-plate {
       grid-template-columns: 1fr 1fr;
 }
 
-.popup-setpoint-body .btns .btn {
+.set-pnt-pu .btns .btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -687,15 +669,15 @@ body.theme-plum-plate {
   border: .01rem solid #fff;
 }
 
-.popup-setpoint-body .btns .btn#ok-btn {
+.set-pnt-pu .btns .btn#ok-btn {
   border-bottom-left-radius: 10px;
 }
 
-.popup-setpoint-body .btns .btn#cancel-btn {
+.set-pnt-pu .btns .btn#cancel-btn {
   border-bottom-right-radius: 10px;
 }
 
-.popup-setpoint-body .btns .btn:hover {
+.set-pnt-pu .btns .btn:hover {
   background: #7E57C2;
 }
 

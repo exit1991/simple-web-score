@@ -26,12 +26,12 @@ const btnSet      = document.querySelector('#btn-set');
 const btnInfo     = document.querySelector('#btn-info');
 
 // ポップアップ関連要素
-const popupBody   = document.querySelector('.popup-body');
+const resetPopup   = document.querySelector('.reset-pu');
 const btnYes      = document.querySelector('.btn-yes');
 const btnCancel   = document.querySelector('.btn-cancel');
 
 // ポイントセット関連要素
-const popupSetPointBody = document.querySelector('.popup-setpoint-body');
+const popupSetPointBody = document.querySelector('.set-pnt-pu');
 const leftIpt           = document.querySelector('#left-ipt');
 const rightIpt          = document.querySelector('#right-ipt');
 const okBtn             = document.querySelector('#ok-btn');
@@ -195,7 +195,7 @@ menuMask.addEventListener('click', () => {
     menuBtn.classList.remove('active');
     menuBody.classList.remove('show');
     menuMask.classList.remove('show');
-    popupBody.classList.remove('show');
+    resetPopup.classList.remove('show');
     popupSetPointBody.classList.remove('show');
 });
 
@@ -203,30 +203,32 @@ menuMask.addEventListener('click', () => {
 btnReset.addEventListener('click', () => {
     menuMask.classList.toggle('show');
     menuBtn.classList.toggle('active');
-    popupBody.classList.add('show');
+    resetPopup.classList.add('show');
 });
 
 btnYes.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
-    popupBody.classList.remove('show');
+    resetPopup.classList.remove('show');
     
+    // ポイント適用
     points.forEach(point => {
         point.innerHTML = 0;
         delayToggleClass(point, 'cntDown', 400);
     });
+    resizePoint();
 });
 
 btnCancel.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
-    popupBody.classList.remove('show');
+    resetPopup.classList.remove('show');
 });
 
 btnTheme.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
-    popupBody.classList.remove('show');
+    resetPopup.classList.remove('show');
     selthemeBody.classList.add('show');
 });
 
@@ -234,7 +236,7 @@ themes.forEach(theme => {
     theme.addEventListener('click', () => {
         menuMask.classList.remove('show');
         menuBtn.classList.remove('active');
-        popupBody.classList.remove('show');
+        resetPopup.classList.remove('show');
         selthemeBody.classList.remove('show');
         
         themeNames.forEach(themeName => {
