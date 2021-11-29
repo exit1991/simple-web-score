@@ -595,6 +595,110 @@ body.theme-plum-plate {
   background: #7E57C2;
 }
 
+.popup-setpoint-body {
+  position: fixed;
+  width: min(70vw, 350px);
+  height: min(40vh, 200px);
+  font-size: min(2.8rem, 16px);
+  text-align: center;
+  color: #000;
+  -webkit-box-shadow: 0px 5px 5px 10px rgba(34, 34, 34, 0.2);
+          box-shadow: 0px 5px 5px 10px rgba(34, 34, 34, 0.2);
+  background: #fff;
+  border-radius: 10px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.popup-setpoint-body.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-animation-name: popupAndFixCenter;
+          animation-name: popupAndFixCenter;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.popup-setpoint-body .popup-grid {
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 35% 40% 25%;
+      grid-template-rows: 35% 40% 25%;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'NotoSansJP', sans-serif;
+  font-weight: 300;
+  color: #666;
+}
+
+.popup-setpoint-body .ipts {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  text-align: right;
+}
+
+.popup-setpoint-body .ipts .ipt {
+  text-align: center;
+  font-family: 'DINAlternate', sans-serif;
+  font-weight: 700;
+  color: #666;
+  font-size: min(3rem, 24px);
+}
+
+.popup-setpoint-body .btns {
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.popup-setpoint-body .btns .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+  height: 100%;
+  background: #673AB7;
+  color: #fff;
+  border: .01rem solid #fff;
+}
+
+.popup-setpoint-body .btns .btn#ok-btn {
+  border-bottom-left-radius: 10px;
+}
+
+.popup-setpoint-body .btns .btn#cancel-btn {
+  border-bottom-right-radius: 10px;
+}
+
+.popup-setpoint-body .btns .btn:hover {
+  background: #7E57C2;
+}
+
 .seltheme-body {
   display: -ms-grid;
   display: grid;

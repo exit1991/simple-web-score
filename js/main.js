@@ -1,7 +1,7 @@
 "use strict";
 
 // debug用ポイント初期値
-const startPoint = 999;
+const startPoint = 0;
 
 // 初期値定義
 const defPointSize = '20rem';
@@ -29,6 +29,14 @@ const btnInfo     = document.querySelector('#btn-info');
 const popupBody   = document.querySelector('.popup-body');
 const btnYes      = document.querySelector('.btn-yes');
 const btnCancel   = document.querySelector('.btn-cancel');
+
+// ポイントセット関連要素
+const popupSetPointBody = document.querySelector('.popup-setpoint-body');
+const leftIpt           = document.querySelector('#left-ipt');
+const rightIpt          = document.querySelector('#right-ipt');
+const okBtn             = document.querySelector('#ok-btn');
+const cancelBtn         = document.querySelector('#cancel-btn');
+
 
 // テーマ選択関連要素
 const selthemeBody = document.querySelector('.seltheme-body');
@@ -188,6 +196,7 @@ menuMask.addEventListener('click', () => {
     menuBody.classList.remove('show');
     menuMask.classList.remove('show');
     popupBody.classList.remove('show');
+    popupSetPointBody.classList.remove('show');
 });
 
 // リセットボタン押下
@@ -239,7 +248,36 @@ themes.forEach(theme => {
 
 
 
+// セットボタン押下
+btnSet.addEventListener('click', () => {
+    menuMask.classList.toggle('show');
+    menuBtn.classList.toggle('active');
+    popupSetPointBody.classList.add('show');
+    
+    leftIpt.value = pointLeft.textContent;
+    rightIpt.value = pointRight.textContent;
+    
+});
 
+okBtn.addEventListener('click', () => {
+    menuMask.classList.remove('show');
+    menuBtn.classList.remove('active');
+    popupSetPointBody.classList.remove('show');
+    
+    // ポイント適用
+    pointLeft.innerHTML  = isNaN(parseInt(leftIpt.value)) ? 0 : parseInt(leftIpt.value);
+    pointRight.innerHTML = isNaN(parseInt(rightIpt.value)) ? 0 : parseInt(rightIpt.value);
+    points.forEach(point => {
+        delayToggleClass(point, 'cntDown', 400);
+    });
+    resizePoint();
+});
+
+cancelBtn.addEventListener('click', () => {
+    menuMask.classList.remove('show');
+    menuBtn.classList.remove('active');
+    popupSetPointBody.classList.remove('show');
+});
 
 
 
