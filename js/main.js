@@ -126,7 +126,7 @@ function changePoint(clkElem, ptElem, chgType) {
 }
 
 function loadThemeFromStrg() {
-    const startTheme = !(strg.getItem('theme')) ? 'default' : strg.getItem('theme');
+    const startTheme = strg.getItem('theme') ?? 'default';
     themeNames.forEach(themeName => body.classList.remove('theme-' + themeName));
     body.classList.add('theme-' + startTheme);
 }
@@ -144,8 +144,8 @@ window.addEventListener('load', () => {
 });
 
 // ポイントをWebStrageから初期化
-pointLeft.innerHTML = !(strg.getItem('leftPoint')) ? 0 : strg.getItem('leftPoint');
-pointRight.innerHTML = !(strg.getItem('rightPoint')) ? 0 : strg.getItem('rightPoint');
+pointLeft.innerHTML = strg.getItem('leftPoint') ?? 0;
+pointRight.innerHTML = strg.getItem('rightPoint') ?? 0;
 
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
