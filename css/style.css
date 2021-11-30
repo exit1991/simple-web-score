@@ -541,6 +541,43 @@ body.theme-plum-plate {
   color: #666;
 }
 
+.popup .btns {
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.popup .btns .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+  height: 100%;
+  background: #673AB7;
+  color: #fff;
+  border: .01rem solid #fff;
+}
+
+.popup .btns .btn.ok-btn {
+  border-bottom-left-radius: 10px;
+}
+
+.popup .btns .btn.cancel-btn {
+  border-bottom-right-radius: 10px;
+}
+
+.popup .btns .btn:hover {
+  background: #7E57C2;
+}
+
 .reset-pu.show {
   opacity: 1;
   visibility: visible;
@@ -563,43 +600,6 @@ body.theme-plum-plate {
       grid-template-columns: 1fr;
   -ms-grid-rows: 30% 45% 25%;
       grid-template-rows: 30% 45% 25%;
-}
-
-.reset-pu ul {
-  height: 100%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-}
-
-.reset-pu ul li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  list-style-type: none;
-  height: 100%;
-  background: #673AB7;
-  color: #fff;
-  border: .01rem solid #fff;
-}
-
-.reset-pu ul li.btn-yes {
-  border-bottom-left-radius: 10px;
-}
-
-.reset-pu ul li.btn-cancel {
-  border-bottom-right-radius: 10px;
-}
-
-.reset-pu ul li:hover {
-  background: #7E57C2;
 }
 
 .set-pnt-pu.show {
@@ -638,43 +638,6 @@ body.theme-plum-plate {
   font-weight: 700;
   color: #666;
   font-size: min(3rem, 24px);
-}
-
-.set-pnt-pu .btns {
-  height: 100%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-}
-
-.set-pnt-pu .btns .btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  list-style-type: none;
-  height: 100%;
-  background: #673AB7;
-  color: #fff;
-  border: .01rem solid #fff;
-}
-
-.set-pnt-pu .btns .btn#ok-btn {
-  border-bottom-left-radius: 10px;
-}
-
-.set-pnt-pu .btns .btn#cancel-btn {
-  border-bottom-right-radius: 10px;
-}
-
-.set-pnt-pu .btns .btn:hover {
-  background: #7E57C2;
 }
 
 .seltheme-body {

@@ -27,15 +27,17 @@ const btnInfo     = document.querySelector('#btn-info');
 
 // ポップアップ関連要素
 const resetPopup   = document.querySelector('.reset-pu');
-const btnYes      = document.querySelector('.btn-yes');
-const btnCancel   = document.querySelector('.btn-cancel');
+// const btnYes      = document.querySelector('.btn-yes');
+// const btnCancel   = document.querySelector('.btn-cancel');
+const btnYes      = document.querySelector('.reset-pu .ok-btn');
+const btnCancel   = document.querySelector('.reset-pu .cancel-btn');
 
 // ポイントセット関連要素
 const popupSetPointBody = document.querySelector('.set-pnt-pu');
 const leftIpt           = document.querySelector('#left-ipt');
 const rightIpt          = document.querySelector('#right-ipt');
-const okBtn             = document.querySelector('#ok-btn');
-const cancelBtn         = document.querySelector('#cancel-btn');
+const okBtn             = document.querySelector('.set-pnt-pu .ok-btn');
+const cancelBtn         = document.querySelector('.set-pnt-pu .cancel-btn');
 
 
 // テーマ選択関連要素
