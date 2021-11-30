@@ -297,36 +297,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         grid-template-rows: 30% 45% 25%;
     }
     
-    // ul {
-    //     height: 100%;
-    //     display: grid;
-    //     grid-template-columns: 1fr 1fr;
-    // }
-    
-    // ul li {
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     list-style-type: none;
-    //     height: 100%;
-    //     background: #673AB7;
-    //     color: #fff;
-    //     border: .01rem solid #fff;
-        
-    //     &.btn-yes {
-    //         border-bottom-left-radius: 10px;
-    //     }
-        
-    //     &.btn-cancel {
-    //         border-bottom-right-radius: 10px;
-    //     }
-        
-    //     &:hover {
-    //         // color: rgba(228, 95, 95, 1.0);
-    //         background: #7E57C2;
-    //     }
-    // }
-    
 }
 
 // ポイントセット用ポップアップ
@@ -355,36 +325,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
             font-size: unquote("min(3rem, 24px)");
         }
     }
-    
-    
-    // .btns {
-    //     height: 100%;
-    //     display: grid;
-    //     grid-template-columns: 1fr 1fr;
-        
-    //     .btn {
-    //         display: flex;
-    //         align-items: center;
-    //         justify-content: center;
-    //         list-style-type: none;
-    //         height: 100%;
-    //         background: #673AB7;
-    //         color: #fff;
-    //         border: .01rem solid #fff;
-            
-    //         &.ok-btn {
-    //             border-bottom-left-radius: 10px;
-    //         }
-            
-    //         &.cancel-btn {
-    //             border-bottom-right-radius: 10px;
-    //         }
-            
-    //         &:hover {
-    //             background: #7E57C2;
-    //         }
-    //     }
-    // }
     
 }
 

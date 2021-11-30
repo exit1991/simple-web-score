@@ -27,17 +27,40 @@ const btnInfo     = document.querySelector('#btn-info');
 
 // ポップアップ関連要素
 const resetPopup   = document.querySelector('.reset-pu');
-// const btnYes      = document.querySelector('.btn-yes');
-// const btnCancel   = document.querySelector('.btn-cancel');
-const btnYes      = document.querySelector('.reset-pu .ok-btn');
-const btnCancel   = document.querySelector('.reset-pu .cancel-btn');
+// const btnYes      = document.querySelector('.reset-pu .ok-btn');
+// const btnCancel   = document.querySelector('.reset-pu .cancel-btn');
 
 // ポイントセット関連要素
 const popupSetPointBody = document.querySelector('.set-pnt-pu');
 const leftIpt           = document.querySelector('#left-ipt');
 const rightIpt          = document.querySelector('#right-ipt');
-const okBtn             = document.querySelector('.set-pnt-pu .ok-btn');
-const cancelBtn         = document.querySelector('.set-pnt-pu .cancel-btn');
+// const okBtn             = document.querySelector('.set-pnt-pu .ok-btn');
+// const cancelBtn         = document.querySelector('.set-pnt-pu .cancel-btn');
+
+
+const resetPuBtns = {
+     ok: document.querySelector('.reset-pu .ok-btn')
+    ,cancel: document.querySelector('.reset-pu .cancel-btn')
+}
+
+const setPntPuBtns = {
+     ok: document.querySelector('.set-pnt-pu .ok-btn')
+    ,cancel: document.querySelector('.set-pnt-pu .cancel-btn')
+}
+
+
+// const okBtns = {
+//      resetPu: document.querySelector('.reset-pu .ok-btn')
+//     ,setPntPu: document.querySelector('.set-pnt-pu .ok-btn')
+// }
+
+// const cancelBtns = {
+//      resetPu: document.querySelector('.reset-pu .cancel-btn')
+//     ,setPntPu: document.querySelector('.set-pnt-pu .cancel-btn')
+// }
+
+
+
 
 
 // テーマ選択関連要素
@@ -208,7 +231,20 @@ btnReset.addEventListener('click', () => {
     resetPopup.classList.add('show');
 });
 
-btnYes.addEventListener('click', () => {
+// btnYes.addEventListener('click', () => {
+//     menuMask.classList.remove('show');
+//     menuBtn.classList.remove('active');
+//     resetPopup.classList.remove('show');
+    
+//     // ポイント適用
+//     points.forEach(point => {
+//         point.innerHTML = 0;
+//         delayToggleClass(point, 'cntDown', 400);
+//     });
+//     resizePoint();
+// });
+
+resetPuBtns.ok.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
     resetPopup.classList.remove('show');
@@ -221,11 +257,21 @@ btnYes.addEventListener('click', () => {
     resizePoint();
 });
 
-btnCancel.addEventListener('click', () => {
+// btnCancel.addEventListener('click', () => {
+//     menuMask.classList.remove('show');
+//     menuBtn.classList.remove('active');
+//     resetPopup.classList.remove('show');
+// });
+
+resetPuBtns.cancel.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
     resetPopup.classList.remove('show');
 });
+
+
+
+
 
 btnTheme.addEventListener('click', () => {
     menuMask.classList.remove('show');
@@ -263,7 +309,27 @@ btnSet.addEventListener('click', () => {
     
 });
 
-okBtn.addEventListener('click', () => {
+// okBtn.addEventListener('click', () => {
+//     menuMask.classList.remove('show');
+//     menuBtn.classList.remove('active');
+//     popupSetPointBody.classList.remove('show');
+    
+//     // ポイント適用
+//     pointLeft.innerHTML  = isNaN(parseInt(leftIpt.value)) ? 0 : parseInt(leftIpt.value);
+//     pointRight.innerHTML = isNaN(parseInt(rightIpt.value)) ? 0 : parseInt(rightIpt.value);
+//     points.forEach(point => {
+//         delayToggleClass(point, 'cntDown', 400);
+//     });
+//     resizePoint();
+// });
+
+// cancelBtn.addEventListener('click', () => {
+//     menuMask.classList.remove('show');
+//     menuBtn.classList.remove('active');
+//     popupSetPointBody.classList.remove('show');
+// });
+
+setPntPuBtns.ok.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
     popupSetPointBody.classList.remove('show');
@@ -277,7 +343,7 @@ okBtn.addEventListener('click', () => {
     resizePoint();
 });
 
-cancelBtn.addEventListener('click', () => {
+setPntPuBtns.cancel.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
     popupSetPointBody.classList.remove('show');
