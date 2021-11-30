@@ -237,6 +237,19 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     opacity: 0;
     transform: translate(-50%, -50%);
     z-index: 5;
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 35% 40% 25%;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        align-items: center;
+        font-family: 'NotoSansJP', sans-serif;
+        font-weight: 300;
+        color: #666;
+    }
 }
 
 
@@ -249,20 +262,19 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         @include useAnimation(popupAndFixCenter, 0.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
     }
     
-    .popup-grid {
-        width: 100%;
-        height: 100%;
+    .grid-container {
+        // width: 100%;
+        // height: 100%;
         
-        display: grid;
+        // display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 30% 45% 25%;
-        text-align: center;
-        align-items: center;
+        // text-align: center;
+        // align-items: center;
         
-        font-family: 'NotoSansJP', sans-serif;
-        font-weight: 300;
-        color: #666;
-        
+        // font-family: 'NotoSansJP', sans-serif;
+        // font-weight: 300;
+        // color: #666;
     }
     
     ul {
@@ -306,20 +318,19 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         @include useAnimation(popupAndFixCenter, 0.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
     }
     
-    .popup-grid {
-        width: 100%;
-        height: 100%;
+    .grid-container {
+        // width: 100%;
+        // height: 100%;
         
-        display: grid;
+        // display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 35% 40% 25%;
-        text-align: center;
-        align-items: center;
+        // text-align: center;
+        // align-items: center;
         
-        font-family: 'NotoSansJP', sans-serif;
-        font-weight: 300;
-        color: #666;
-        
+        // font-family: 'NotoSansJP', sans-serif;
+        // font-weight: 300;
+        // color: #666;
     }
     
     .ipts {
@@ -340,31 +351,55 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         height: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style-type: none;
+            height: 100%;
+            background: #673AB7;
+            color: #fff;
+            border: .01rem solid #fff;
+            
+            &#ok-btn {
+                border-bottom-left-radius: 10px;
+            }
+            
+            &#cancel-btn {
+                border-bottom-right-radius: 10px;
+            }
+            
+            &:hover {
+                // color: rgba(228, 95, 95, 1.0);
+                background: #7E57C2;
+            }
+        }
     }
     
-    .btns .btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        list-style-type: none;
-        height: 100%;
-        background: #673AB7;
-        color: #fff;
-        border: .01rem solid #fff;
+    // .btns .btn {
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     list-style-type: none;
+    //     height: 100%;
+    //     background: #673AB7;
+    //     color: #fff;
+    //     border: .01rem solid #fff;
         
-        &#ok-btn {
-            border-bottom-left-radius: 10px;
-        }
+    //     &#ok-btn {
+    //         border-bottom-left-radius: 10px;
+    //     }
         
-        &#cancel-btn {
-            border-bottom-right-radius: 10px;
-        }
+    //     &#cancel-btn {
+    //         border-bottom-right-radius: 10px;
+    //     }
         
-        &:hover {
-            // color: rgba(228, 95, 95, 1.0);
-            background: #7E57C2;
-        }
-    }
+    //     &:hover {
+    //         // color: rgba(228, 95, 95, 1.0);
+    //         background: #7E57C2;
+    //     }
+    // }
     
 }
 
