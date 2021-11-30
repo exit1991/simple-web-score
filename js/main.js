@@ -20,48 +20,28 @@ const menuBody    = document.querySelector('.menu-body');
 const menuMask    = document.querySelector('.menu-mask');
 
 // メニュー関連要素
-const btnReset    = document.querySelector('#btn-reset');
-const btnTheme    = document.querySelector('#btn-theme');
-const btnSet      = document.querySelector('#btn-set');
-const btnInfo     = document.querySelector('#btn-info');
+const menuBtns = {
+     reset: document.querySelector('#btn-reset')
+    ,theme: document.querySelector('#btn-theme')
+    ,set: document.querySelector('#btn-set')
+    ,info: document.querySelector('#btn-info')
+}
 
 // ポップアップ関連要素
 const resetPopup   = document.querySelector('.reset-pu');
-// const btnYes      = document.querySelector('.reset-pu .ok-btn');
-// const btnCancel   = document.querySelector('.reset-pu .cancel-btn');
+const resetPuBtns = {
+    ok: document.querySelector('.reset-pu .ok-btn')
+   ,cancel: document.querySelector('.reset-pu .cancel-btn')
+}
 
 // ポイントセット関連要素
 const popupSetPointBody = document.querySelector('.set-pnt-pu');
 const leftIpt           = document.querySelector('#left-ipt');
 const rightIpt          = document.querySelector('#right-ipt');
-// const okBtn             = document.querySelector('.set-pnt-pu .ok-btn');
-// const cancelBtn         = document.querySelector('.set-pnt-pu .cancel-btn');
-
-
-const resetPuBtns = {
-     ok: document.querySelector('.reset-pu .ok-btn')
-    ,cancel: document.querySelector('.reset-pu .cancel-btn')
-}
-
 const setPntPuBtns = {
      ok: document.querySelector('.set-pnt-pu .ok-btn')
     ,cancel: document.querySelector('.set-pnt-pu .cancel-btn')
 }
-
-
-// const okBtns = {
-//      resetPu: document.querySelector('.reset-pu .ok-btn')
-//     ,setPntPu: document.querySelector('.set-pnt-pu .ok-btn')
-// }
-
-// const cancelBtns = {
-//      resetPu: document.querySelector('.reset-pu .cancel-btn')
-//     ,setPntPu: document.querySelector('.set-pnt-pu .cancel-btn')
-// }
-
-
-
-
 
 // テーマ選択関連要素
 const selthemeBody = document.querySelector('.seltheme-body');
@@ -225,24 +205,11 @@ menuMask.addEventListener('click', () => {
 });
 
 // リセットボタン押下
-btnReset.addEventListener('click', () => {
+menuBtns.reset.addEventListener('click', () => {
     menuMask.classList.toggle('show');
     menuBtn.classList.toggle('active');
     resetPopup.classList.add('show');
 });
-
-// btnYes.addEventListener('click', () => {
-//     menuMask.classList.remove('show');
-//     menuBtn.classList.remove('active');
-//     resetPopup.classList.remove('show');
-    
-//     // ポイント適用
-//     points.forEach(point => {
-//         point.innerHTML = 0;
-//         delayToggleClass(point, 'cntDown', 400);
-//     });
-//     resizePoint();
-// });
 
 resetPuBtns.ok.addEventListener('click', () => {
     menuMask.classList.remove('show');
@@ -257,12 +224,6 @@ resetPuBtns.ok.addEventListener('click', () => {
     resizePoint();
 });
 
-// btnCancel.addEventListener('click', () => {
-//     menuMask.classList.remove('show');
-//     menuBtn.classList.remove('active');
-//     resetPopup.classList.remove('show');
-// });
-
 resetPuBtns.cancel.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
@@ -273,7 +234,7 @@ resetPuBtns.cancel.addEventListener('click', () => {
 
 
 
-btnTheme.addEventListener('click', () => {
+menuBtns.theme.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
     resetPopup.classList.remove('show');
@@ -299,7 +260,7 @@ themes.forEach(theme => {
 
 
 // セットボタン押下
-btnSet.addEventListener('click', () => {
+menuBtns.set.addEventListener('click', () => {
     menuMask.classList.toggle('show');
     menuBtn.classList.toggle('active');
     popupSetPointBody.classList.add('show');
@@ -308,26 +269,6 @@ btnSet.addEventListener('click', () => {
     rightIpt.value = pointRight.textContent;
     
 });
-
-// okBtn.addEventListener('click', () => {
-//     menuMask.classList.remove('show');
-//     menuBtn.classList.remove('active');
-//     popupSetPointBody.classList.remove('show');
-    
-//     // ポイント適用
-//     pointLeft.innerHTML  = isNaN(parseInt(leftIpt.value)) ? 0 : parseInt(leftIpt.value);
-//     pointRight.innerHTML = isNaN(parseInt(rightIpt.value)) ? 0 : parseInt(rightIpt.value);
-//     points.forEach(point => {
-//         delayToggleClass(point, 'cntDown', 400);
-//     });
-//     resizePoint();
-// });
-
-// cancelBtn.addEventListener('click', () => {
-//     menuMask.classList.remove('show');
-//     menuBtn.classList.remove('active');
-//     popupSetPointBody.classList.remove('show');
-// });
 
 setPntPuBtns.ok.addEventListener('click', () => {
     menuMask.classList.remove('show');
@@ -348,7 +289,6 @@ setPntPuBtns.cancel.addEventListener('click', () => {
     menuBtn.classList.remove('active');
     popupSetPointBody.classList.remove('show');
 });
-
 
 
 

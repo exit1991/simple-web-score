@@ -512,15 +512,15 @@ body.theme-plum-plate {
   font-size: min(2.8rem, 16px);
   text-align: center;
   color: #000;
+  background: #fff;
   -webkit-box-shadow: 0px 5px 5px 10px rgba(34, 34, 34, 0.2);
           box-shadow: 0px 5px 5px 10px rgba(34, 34, 34, 0.2);
-  background: #fff;
   border-radius: 10px;
   visibility: hidden;
   opacity: 0;
+  z-index: 5;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: 5;
 }
 
 .popup .grid-container {
