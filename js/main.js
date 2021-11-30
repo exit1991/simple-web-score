@@ -1,7 +1,7 @@
 "use strict";
 
 // 初期値定義
-const defPointSize = '20rem';
+const defaultPointRemSize = '20';
 
 // WEBストレージオブジェクト (ローカル)
 const strg = localStorage;
@@ -81,23 +81,21 @@ function resizePoint() {
     const pointSizes = [];
     points.forEach(point => {
         const nowPointStrCnt = point.textContent.length;
-        const newPointSize = nowPointStrCnt >= 4 ? digitToRemSize(nowPointStrCnt) + 'rem' : defPointSize;
-        point.style.fontSize = newPointSize;
-        pointSizes.push(parseFloat(newPointSize));
+        const newPointSize = nowPointStrCnt >= 4 ? digitToRemSize(nowPointStrCnt) : defaultPointRemSize;
+        pointSizes.push(newPointSize);
     });
-    const maxPointSize = pointSizes.reduce(aryMax);
-    pointCenter.style.fontSize = maxPointSize + 'rem';
+    const minPointSize = pointSizes.reduce(aryMin);
+    points.push(pointCenter);
+    points.forEach(point => point.style.fontSize = minPointSize + 'rem');
 }
 
 function savePointToStrg(ptElem) {
     switch (ptElem) {
         case pointLeft:
             strg.setItem('leftPoint', pointLeft.innerHTML);
-            // console.log(strg.getItem('leftPoint'));
             break;
         case pointRight:
             strg.setItem('rightPoint', pointRight.innerHTML);
-            // console.log(strg.getItem('rightPoint'));
             break;
         default:
             break;
