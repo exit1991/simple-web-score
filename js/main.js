@@ -200,16 +200,9 @@ menuBtns.reset.addEventListener('click', () => {
 });
 
 resetPuBtns.ok.addEventListener('click', () => {
-    menuMask.classList.remove('show');
-    menuBtn.classList.remove('active');
-    resetPopup.classList.remove('show');
-    
-    // ポイント適用
-    points.forEach(point => {
-        point.innerHTML = 0;
-        delayToggleClass(point, 'cntDown', 400);
-    });
-    resizePoint();
+    // WebStrageを空にした上でページをリロード
+    strg.clear();
+    location.reload();
 });
 
 resetPuBtns.cancel.addEventListener('click', () => {
