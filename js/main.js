@@ -1,10 +1,10 @@
 "use strict";
 
-// debug用ポイント初期値
-const startPoint = 0;
-
 // 初期値定義
 const defPointSize = '20rem';
+
+// WEBストレージオブジェクト (ローカル)
+const strg = localStorage;
 
 // イベント設定の為の要素の取得
 const body        = document.querySelector('body');
@@ -126,6 +126,21 @@ const resizePoint = () => {
     pointCenter.style.fontSize = maxPointSize + 'rem';
 };
 
+const savePointToStrg = (ptElem) => {
+    switch (ptElem) {
+        case pointLeft:
+            strg.setItem('leftPoint', pointLeft.innerHTML);
+            // console.log(strg.getItem('leftPoint'));
+            break;
+        case pointRight:
+            strg.setItem('rightPoint', pointRight.innerHTML);
+            // console.log(strg.getItem('rightPoint'));
+            break;
+        default:
+            break;
+    }
+};
+
 const changePoint = (clkElem, ptElem, chgType) => {
     let clsName = '';
     switch (chgType) {
@@ -143,8 +158,19 @@ const changePoint = (clkElem, ptElem, chgType) => {
         ptElem.innerHTML = parseInt(nowPoint) + chgType;
         delayToggleClass(ptElem, clsName, 400);
         resizePoint();
+        savePointToStrg(ptElem);
     });
 };
+
+const loadThemeFromStrg = () => {
+    const startTheme = !(strg.getItem('theme')) ? 'default' : strg.getItem('theme');
+    themeNames.forEach(themeName => body.classList.remove('theme-' + themeName));
+    body.classList.add('theme-' + startTheme);
+};
+
+const saveThemeToStrg = (themeName) => {
+    strg.setItem('theme', themeName);
+}
 
 
 /* ====================
@@ -153,13 +179,16 @@ const changePoint = (clkElem, ptElem, chgType) => {
 
 window.addEventListener('load', () => {
     resizePoint();
+    loadThemeFromStrg();
 });
 
+// ポイントをWebStrageから初期化
+pointLeft.innerHTML = !(strg.getItem('leftPoint')) ? 0 : strg.getItem('leftPoint');
+pointRight.innerHTML = !(strg.getItem('rightPoint')) ? 0 : strg.getItem('rightPoint');
 
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
 points.forEach(point => {
-    point.innerHTML = startPoint; // 初期化
     delayToggleClass(point, 'cntUp', 400);
     changePoint(point, point, chgType.up);
 });
@@ -252,6 +281,7 @@ themes.forEach(theme => {
             body.classList.remove('theme-' + themeName);
             if (theme.classList.contains(themeName)) {
                 body.classList.add('theme-' + themeName);
+                saveThemeToStrg(themeName);
             }
         });
     });
