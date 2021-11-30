@@ -505,50 +505,33 @@ body.theme-plum-plate {
   color: #e45f5f;
 }
 
-.popup-body {
+.popup {
   position: fixed;
   width: min(70vw, 350px);
   height: min(40vh, 200px);
   font-size: min(2.8rem, 16px);
   text-align: center;
   color: #000;
+  background: #fff;
   -webkit-box-shadow: 0px 5px 5px 10px rgba(34, 34, 34, 0.2);
           box-shadow: 0px 5px 5px 10px rgba(34, 34, 34, 0.2);
-  background: #fff;
   border-radius: 10px;
   visibility: hidden;
   opacity: 0;
+  z-index: 5;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: 5;
 }
 
-.popup-body.show {
-  opacity: 1;
-  visibility: visible;
-  -webkit-animation-name: popupAndFixCenter;
-          animation-name: popupAndFixCenter;
-  -webkit-animation-duration: 0.6s;
-          animation-duration: 0.6s;
-  -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-}
-
-.popup-body .popup-grid {
-  width: 100%;
-  height: 100%;
+.popup .grid-container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 30% 45% 25%;
-      grid-template-rows: 30% 45% 25%;
+  -ms-grid-rows: 35% 40% 25%;
+      grid-template-rows: 35% 40% 25%;
+  width: 100%;
+  height: 100%;
   text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -558,7 +541,7 @@ body.theme-plum-plate {
   color: #666;
 }
 
-.popup-body ul {
+.popup .btns {
   height: 100%;
   display: -ms-grid;
   display: grid;
@@ -566,7 +549,7 @@ body.theme-plum-plate {
       grid-template-columns: 1fr 1fr;
 }
 
-.popup-body ul li {
+.popup .btns .btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -583,16 +566,78 @@ body.theme-plum-plate {
   border: .01rem solid #fff;
 }
 
-.popup-body ul li.btn-yes {
+.popup .btns .btn.ok-btn {
   border-bottom-left-radius: 10px;
 }
 
-.popup-body ul li.btn-cancel {
+.popup .btns .btn.cancel-btn {
   border-bottom-right-radius: 10px;
 }
 
-.popup-body ul li:hover {
+.popup .btns .btn:hover {
   background: #7E57C2;
+}
+
+.reset-pu.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-animation-name: popupAndFixCenter;
+          animation-name: popupAndFixCenter;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.reset-pu .grid-container {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 30% 45% 25%;
+      grid-template-rows: 30% 45% 25%;
+}
+
+.set-pnt-pu.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-animation-name: popupAndFixCenter;
+          animation-name: popupAndFixCenter;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.set-pnt-pu .grid-container {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 35% 40% 25%;
+      grid-template-rows: 35% 40% 25%;
+}
+
+.set-pnt-pu .ipts {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  text-align: right;
+}
+
+.set-pnt-pu .ipts .ipt {
+  text-align: center;
+  font-family: 'DINAlternate', sans-serif;
+  font-weight: 700;
+  color: #666;
+  font-size: min(3rem, 24px);
 }
 
 .seltheme-body {

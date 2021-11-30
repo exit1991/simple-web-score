@@ -27,17 +27,38 @@
         </div>
     </div>
     <div class="popup-container">
-        <div class="popup-body">
-            <div class="popup-grid">
+        <div class="reset-pu popup">
+            <div class="grid-container">
                 <div class="popup-icon">！</div>
                 <div class="popup-msg">
-                    <div lang="ja">リセットしてもよろしいですか？</div>
+                    <p lang="ja">リセットしてもよろしいですか？</p>
                 </div>
-                <ul>
-                    <li class="btn-yes">はい</li>
-                    <li class="btn-cancel">キャンセル</li>
-                </ul>
+                <div class="btns">
+                    <button class="btn ok-btn" type="button">OK</button>
+                    <button class="btn cancel-btn" type="button">キャンセル</button>
+                </div>
             </div>
+        </div>
+        <div class="set-pnt-pu popup">
+            <form class="grid-container" name="popupForm">
+                <div class="popup-msg">
+                    <p lang="ja">設定するポイント数を入力してください</p>
+                </div>
+                <div class="ipts">
+                    <p>
+                        <label for="left-ipt">LEFT</label>
+                        <input id="left-ipt" class="ipt" type="number" name="left" value="0">
+                    </p>
+                    <p>
+                        <label for="right-ipt">RIGHT</label>
+                        <input id="right-ipt" class="ipt" type="number" name="right" value="0">
+                    </p>
+                </div>
+                <div class="btns">
+                    <button class="btn ok-btn" type="button">OK</button>
+                    <button class="btn cancel-btn" type="button">キャンセル</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="seltheme-container">

@@ -1,7 +1,7 @@
 "use strict";
 
 // debug用ポイント初期値
-const startPoint = 999;
+const startPoint = 0;
 
 // 初期値定義
 const defPointSize = '20rem';
@@ -20,15 +20,28 @@ const menuBody    = document.querySelector('.menu-body');
 const menuMask    = document.querySelector('.menu-mask');
 
 // メニュー関連要素
-const btnReset    = document.querySelector('#btn-reset');
-const btnTheme    = document.querySelector('#btn-theme');
-const btnSet      = document.querySelector('#btn-set');
-const btnInfo     = document.querySelector('#btn-info');
+const menuBtns = {
+     reset: document.querySelector('#btn-reset')
+    ,theme: document.querySelector('#btn-theme')
+    ,set: document.querySelector('#btn-set')
+    ,info: document.querySelector('#btn-info')
+}
 
 // ポップアップ関連要素
-const popupBody   = document.querySelector('.popup-body');
-const btnYes      = document.querySelector('.btn-yes');
-const btnCancel   = document.querySelector('.btn-cancel');
+const resetPopup   = document.querySelector('.reset-pu');
+const resetPuBtns = {
+    ok: document.querySelector('.reset-pu .ok-btn')
+   ,cancel: document.querySelector('.reset-pu .cancel-btn')
+}
+
+// ポイントセット関連要素
+const popupSetPointBody = document.querySelector('.set-pnt-pu');
+const leftIpt           = document.querySelector('#left-ipt');
+const rightIpt          = document.querySelector('#right-ipt');
+const setPntPuBtns = {
+     ok: document.querySelector('.set-pnt-pu .ok-btn')
+    ,cancel: document.querySelector('.set-pnt-pu .cancel-btn')
+}
 
 // テーマ選択関連要素
 const selthemeBody = document.querySelector('.seltheme-body');
@@ -187,37 +200,44 @@ menuMask.addEventListener('click', () => {
     menuBtn.classList.remove('active');
     menuBody.classList.remove('show');
     menuMask.classList.remove('show');
-    popupBody.classList.remove('show');
+    resetPopup.classList.remove('show');
+    popupSetPointBody.classList.remove('show');
 });
 
 // リセットボタン押下
-btnReset.addEventListener('click', () => {
+menuBtns.reset.addEventListener('click', () => {
     menuMask.classList.toggle('show');
     menuBtn.classList.toggle('active');
-    popupBody.classList.add('show');
+    resetPopup.classList.add('show');
 });
 
-btnYes.addEventListener('click', () => {
+resetPuBtns.ok.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
-    popupBody.classList.remove('show');
+    resetPopup.classList.remove('show');
     
+    // ポイント適用
     points.forEach(point => {
         point.innerHTML = 0;
         delayToggleClass(point, 'cntDown', 400);
     });
+    resizePoint();
 });
 
-btnCancel.addEventListener('click', () => {
+resetPuBtns.cancel.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
-    popupBody.classList.remove('show');
+    resetPopup.classList.remove('show');
 });
 
-btnTheme.addEventListener('click', () => {
+
+
+
+
+menuBtns.theme.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
-    popupBody.classList.remove('show');
+    resetPopup.classList.remove('show');
     selthemeBody.classList.add('show');
 });
 
@@ -225,7 +245,7 @@ themes.forEach(theme => {
     theme.addEventListener('click', () => {
         menuMask.classList.remove('show');
         menuBtn.classList.remove('active');
-        popupBody.classList.remove('show');
+        resetPopup.classList.remove('show');
         selthemeBody.classList.remove('show');
         
         themeNames.forEach(themeName => {
@@ -239,8 +259,36 @@ themes.forEach(theme => {
 
 
 
+// セットボタン押下
+menuBtns.set.addEventListener('click', () => {
+    menuMask.classList.toggle('show');
+    menuBtn.classList.toggle('active');
+    popupSetPointBody.classList.add('show');
+    
+    leftIpt.value = pointLeft.textContent;
+    rightIpt.value = pointRight.textContent;
+    
+});
 
+setPntPuBtns.ok.addEventListener('click', () => {
+    menuMask.classList.remove('show');
+    menuBtn.classList.remove('active');
+    popupSetPointBody.classList.remove('show');
+    
+    // ポイント適用
+    pointLeft.innerHTML  = isNaN(parseInt(leftIpt.value)) ? 0 : parseInt(leftIpt.value);
+    pointRight.innerHTML = isNaN(parseInt(rightIpt.value)) ? 0 : parseInt(rightIpt.value);
+    points.forEach(point => {
+        delayToggleClass(point, 'cntDown', 400);
+    });
+    resizePoint();
+});
 
+setPntPuBtns.cancel.addEventListener('click', () => {
+    menuMask.classList.remove('show');
+    menuBtn.classList.remove('active');
+    popupSetPointBody.classList.remove('show');
+});
 
 
 

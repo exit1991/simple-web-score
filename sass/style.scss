@@ -32,8 +32,7 @@ $set-theme: 'default';
 
 :root {
     font-size: 1.2vw;
-    // ダブルタップ対策
-    touch-action: manipulation;
+    touch-action: manipulation; // ダブルタップ対策
 }
 
 // 基本設定
@@ -45,9 +44,9 @@ body {
     color: #fff;
     font: 800 15rem 'DINAlternate', sans-serif;
     font-size: 1rem;
-    user-select: none; // 連打対応：テキスト選択の無効化
+    user-select: none; // テキスト選択の無効化 (連打対応)
     
-    // 背景設定
+    // テーマ背景設定
     background: map-get($theme-colors, $set-theme);
     @each $theme-name, $theme-color in $theme-colors {
         &.theme-#{$theme-name} {background: $theme-color}
@@ -69,7 +68,6 @@ body {
         font-size: 20rem; // JSで制御中
         margin: 0;
         letter-spacing: 0.01em;
-        // text-align: center;
         
         &.cntUp {
             @include useAnimation(fadeinAndDown, 0.4s, ease-out, forwards, 0s, 1);
@@ -108,7 +106,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 }
 
 .menu-btn {
-    // position: absolute;
     position: fixed;
     top: 5vh;
     right: 5vw;
@@ -168,7 +165,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     visibility: hidden;
     z-index: 2;
     
-    // メニュー開いた際
     &.show {
         visibility: visible;
         opacity: 0.7;
@@ -189,7 +185,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     z-index: 4;
     
     &.show {
-        // right: 5rem;
         bottom: 15vh;
         opacity: 1;
         visibility: visible;
@@ -202,7 +197,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     }
     
     ul li {
-        // font-size: unquote("max(5rem, 30px)");
         font-size: unquote("min(5rem, 60px)");
         text-transform: uppercase;
         list-style-type: none;
@@ -220,24 +214,69 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 }
 
 
-
-
-.popup-body {
+// ポップアップ共通
+.popup {
     position:fixed;
     width: unquote("min(70vw, 350px)");
     height: unquote("min(40vh, 200px)");
-    
     font-size: unquote("min(2.8rem, 16px)");
     text-align: center;
     color: #000;
-    box-shadow: 0px 5px 5px 10px rgba($color: #222, $alpha: 0.2);
-    
     background: #fff;
+    box-shadow: 0px 5px 5px 10px rgba($color: #222, $alpha: 0.2);
     border-radius: 10px;
     visibility: hidden;
     opacity: 0;
-    transform: translate(-50%, -50%);
     z-index: 5;
+    transform: translate(-50%, -50%);
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 35% 40% 25%;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        align-items: center;
+        font-family: 'NotoSansJP', sans-serif;
+        font-weight: 300;
+        color: #666;
+    }
+    
+    .btns {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style-type: none;
+            height: 100%;
+            background: #673AB7;
+            color: #fff;
+            border: .01rem solid #fff;
+            
+            &.ok-btn {
+                border-bottom-left-radius: 10px;
+            }
+            
+            &.cancel-btn {
+                border-bottom-right-radius: 10px;
+            }
+            
+            &:hover {
+                background: #7E57C2;
+            }
+        }
+    }
+    
+}
+
+
+// リセット用ポップアップ
+.reset-pu {
     
     &.show {
         opacity: 1;
@@ -245,53 +284,42 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         @include useAnimation(popupAndFixCenter, 0.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
     }
     
-    .popup-grid {
-        width: 100%;
-        height: 100%;
-        
-        display: grid;
+    .grid-container {
         grid-template-columns: 1fr;
         grid-template-rows: 30% 45% 25%;
-        text-align: center;
-        align-items: center;
-        
-        font-family: 'NotoSansJP', sans-serif;
-        font-weight: 300;
-        color: #666;
-        
     }
     
-    ul {
-        height: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+}
+
+// ポイントセット用ポップアップ
+.set-pnt-pu {
+    
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        @include useAnimation(popupAndFixCenter, 0.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
     }
     
-    ul li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        list-style-type: none;
-        height: 100%;
-        background: #673AB7;
-        color: #fff;
-        border: .01rem solid #fff;
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 35% 40% 25%;
+    }
+    
+    .ipts {
+        align-self: flex-start;
+        text-align: right;
         
-        &.btn-yes {
-            border-bottom-left-radius: 10px;
-        }
-        
-        &.btn-cancel {
-            border-bottom-right-radius: 10px;
-        }
-        
-        &:hover {
-            // color: rgba(228, 95, 95, 1.0);
-            background: #7E57C2;
+        .ipt {
+            text-align: center;
+            font-family: 'DINAlternate', sans-serif;
+            font-weight: 700;
+            color: #666;
+            font-size: unquote("min(3rem, 24px)");
         }
     }
     
 }
+
 
 
 
@@ -315,10 +343,8 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     z-index: 0;
     transform: translateX(-100%);
     @include useAnimation(slideToRight, 2.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
-
     
     &.show {
-        // visibility: visible;
         opacity: 1;
         z-index: 10;
         @include useAnimation(slideFromLeft, 2.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
@@ -334,7 +360,6 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
             color: rgba(228, 95, 95, 1.0);
         }
     }
-    
     
     @each $theme-name, $theme-color in $theme-colors {
         &>.#{$theme-name} {
