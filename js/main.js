@@ -62,58 +62,21 @@ themeNames.forEach(themeName => {
 });
 
 
-
 /* ====================
-    汎用オブジェクト
+      関数類定義
 ==================== */
-
 const chgType = {up: 1, down: -1};
-
-
-/* ====================
-       汎用関数
-==================== */
-
-/**
- * rem単位をpx単位に変換する
- * @param rem rem単位のサイズを表す文字列
- * @return px単位のサイズを表す数値
- */
-function convertRemToPx(rem) {
-    const fontSize = getComputedStyle(document.documentElement).fontSize;
-    return rem * parseFloat(fontSize);
-}
-
-/**
- * px単位をrem単位に変換する
- * @param px px単位のサイズを表す文字列
- * @return rem単位のサイズを表す数値
- */
-function convertPxToRem(px) {
-    const fontSize = getComputedStyle(document.documentElement).fontSize;
-    return px / parseFloat(fontSize);
-}
-
-
-
-
-/* ====================
-    汎用アロー関数
-==================== */
-
 const aryMax = (a, b) => Math.max(a, b);
 const aryMin = (a, b) => Math.min(a, b);
 
-const delayToggleClass = (elem, clsName, delayMSec = 400) => {
+function delayToggleClass(elem, clsName, delayMSec = 400) {
     elem.classList.add(clsName);
     setTimeout(() => {elem.classList.remove(clsName);}, delayMSec);
-};
+}
 
-const digitToRemSize = digitVal => {
-    return 20 - (6 * (2 - Math.pow(0.5, digitVal - 4)));
-};
+const digitToRemSize = digitVal => 20 - (6 * (2 - Math.pow(0.5, digitVal - 4)));
 
-const resizePoint = () => {
+function resizePoint() {
     const points = [pointLeft, pointRight];
     const pointSizes = [];
     points.forEach(point => {
@@ -124,9 +87,9 @@ const resizePoint = () => {
     });
     const maxPointSize = pointSizes.reduce(aryMax);
     pointCenter.style.fontSize = maxPointSize + 'rem';
-};
+}
 
-const savePointToStrg = (ptElem) => {
+function savePointToStrg(ptElem) {
     switch (ptElem) {
         case pointLeft:
             strg.setItem('leftPoint', pointLeft.innerHTML);
@@ -139,9 +102,9 @@ const savePointToStrg = (ptElem) => {
         default:
             break;
     }
-};
+}
 
-const changePoint = (clkElem, ptElem, chgType) => {
+function changePoint(clkElem, ptElem, chgType) {
     let clsName = '';
     switch (chgType) {
         case 1:
@@ -160,17 +123,15 @@ const changePoint = (clkElem, ptElem, chgType) => {
         resizePoint();
         savePointToStrg(ptElem);
     });
-};
+}
 
-const loadThemeFromStrg = () => {
+function loadThemeFromStrg() {
     const startTheme = !(strg.getItem('theme')) ? 'default' : strg.getItem('theme');
     themeNames.forEach(themeName => body.classList.remove('theme-' + themeName));
     body.classList.add('theme-' + startTheme);
-};
-
-const saveThemeToStrg = (themeName) => {
-    strg.setItem('theme', themeName);
 }
+
+const saveThemeToStrg = (themeName) => strg.setItem('theme', themeName);
 
 
 /* ====================
@@ -312,6 +273,8 @@ setPntPuBtns.ok.addEventListener('click', () => {
         delayToggleClass(point, 'cntDown', 400);
     });
     resizePoint();
+    savePointToStrg(pointLeft);
+    savePointToStrg(pointRight);
 });
 
 setPntPuBtns.cancel.addEventListener('click', () => {
