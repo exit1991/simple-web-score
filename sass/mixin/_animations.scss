@@ -27,6 +27,16 @@
     }
 }
 
+// フェードアウト
+@keyframes fadeout {
+    0% {
+       opacity: 1;
+    }
+    100% {
+       opacity: 0;
+    }
+}
+
 // 高さ・位置・透過が変化して線が上から下に動く（スクロール催促用）
 @keyframes pathmove{
     0%{

@@ -16,6 +16,24 @@
   }
 }
 
+@-webkit-keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @-webkit-keyframes pathmove {
   0% {
     height: 0;
@@ -344,7 +362,7 @@ body.theme-plum-plate {
 }
 
 #splash-logo img {
-  width: 60vw;
+  width: 30vw;
 }
 
 .fadeUp {
