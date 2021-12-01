@@ -19,6 +19,10 @@ const menuBtn     = document.querySelector('.menu-btn');
 const menuBody    = document.querySelector('.menu-body');
 const menuMask    = document.querySelector('.menu-mask');
 
+const splash      = document.querySelector('#splash');
+const splashLogo  = document.querySelector('#splash-logo');
+
+
 // メニュー関連要素
 const menuBtns = {
      reset: document.querySelector('#btn-reset')
@@ -132,11 +136,23 @@ function loadThemeFromStrg() {
 const saveThemeToStrg = (themeName) => strg.setItem('theme', themeName);
 
 
+
+// フェードアウト用関数
+function elementFadeOut(elem, duration = 1000, delayTime = 0, afterWork = () => {}) {
+    elem.style.opacity = 1;
+    elem.style.transition = 'opacity ' + duration + 'ms';
+    setTimeout(() => {elem.style.opacity = 0;}, delayTime);
+    setTimeout(() => {elem.style.display = 'none'; afterWork();}, delayTime + duration);
+}
+
+
 /* ====================
     処理定義
 ==================== */
 
 window.addEventListener('load', () => {
+    elementFadeOut(splash, 500, 800);
+    elementFadeOut(splashLogo, 500, 800);
     resizePoint();
     loadThemeFromStrg();
 });
