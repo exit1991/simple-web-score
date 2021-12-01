@@ -50,6 +50,9 @@ const setPntPuBtns = {
 // テーマ選択関連要素
 const selthemeBody = document.querySelector('.seltheme-body');
 
+
+
+
 // テーマ名定義（★追加修正はここで行う）
 const themeNames = ['default'
                     ,'peach'
@@ -128,7 +131,9 @@ function changePoint(clkElem, ptElem, chgType) {
 }
 
 function loadThemeFromStrg() {
-    const startTheme = strg.getItem('theme') ?? 'default';
+    // const startTheme = strg.getItem('theme') ?? 'default';
+    // 古いバージョンのiPhone対策
+    const startTheme = !(strg.getItem('theme')) ? 0 : strg.getItem('theme');
     themeNames.forEach(themeName => body.classList.remove('theme-' + themeName));
     body.classList.add('theme-' + startTheme);
 }
@@ -138,28 +143,45 @@ const saveThemeToStrg = (themeName) => strg.setItem('theme', themeName);
 
 
 // フェードアウト用関数
-function elementFadeOut(elem, duration = 1000, delayTime = 0, afterWork = () => {}) {
-    elem.style.opacity = 1;
-    elem.style.transition = 'opacity ' + duration + 'ms';
-    setTimeout(() => {elem.style.opacity = 0;}, delayTime);
-    setTimeout(() => {elem.style.display = 'none'; afterWork();}, delayTime + duration);
-}
+// function elementFadeOut(elem, duration = 1000, delayTime = 0, afterWork = () => {}) {
+//     elem.style.opacity = 1;
+//     elem.style.transition = 'opacity ' + duration + 'ms';
+//     setTimeout(() => {elem.style.opacity = 0;}, delayTime);
+//     setTimeout(() => {elem.style.display = 'none'; afterWork();}, delayTime + duration);
+// }
 
 
 /* ====================
     処理定義
 ==================== */
 
+// let splash;
+// let splashLogo;
+
 window.addEventListener('load', () => {
-    elementFadeOut(splash, 500, 800);
-    elementFadeOut(splashLogo, 500, 800);
+    // elementFadeOut(splash, 500, 800);
+    // elementFadeOut(splashLogo, 500, 800);
+    
+    const delayTime = 800;
+    setTimeout(() => {
+        splash.classList.add('hide');
+        splashLogo.classList.add('hide');
+    }, delayTime);
+    setTimeout(() => {
+        splash.style.display = 'none';
+        // splashLogo.style.display = 'none';
+    }, delayTime + 200);
+    
     resizePoint();
     loadThemeFromStrg();
 });
 
 // ポイントをWebStrageから初期化
-pointLeft.innerHTML = strg.getItem('leftPoint') ?? 0;
-pointRight.innerHTML = strg.getItem('rightPoint') ?? 0;
+// pointLeft.innerHTML = strg.getItem('leftPoint') ?? 0;
+// pointRight.innerHTML = strg.getItem('rightPoint') ?? 0;
+// 古いバージョンのiPhone対策
+pointLeft.innerHTML = !(strg.getItem('leftPoint')) ? 0 : strg.getItem('leftPoint');
+pointRight.innerHTML = !(strg.getItem('rightPoint')) ? 0 : strg.getItem('rightPoint');
 
 // クリックで +1 を行う
 const points = [pointLeft, pointRight];
