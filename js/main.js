@@ -18,7 +18,6 @@ const upBtnRight  = document.querySelector('.up-btn-right');
 const menuBtn     = document.querySelector('.menu-btn');
 const menuBody    = document.querySelector('.menu-body');
 const menuMask    = document.querySelector('.menu-mask');
-
 const splash      = document.querySelector('#splash');
 const splashLogo  = document.querySelector('#splash-logo');
 
@@ -55,9 +54,6 @@ const infoPuBtns = {
 
 // テーマ選択関連要素
 const selthemeBody = document.querySelector('.seltheme-body');
-
-
-
 
 // テーマ名定義（★追加修正はここで行う）
 const themeNames = ['default'
@@ -240,10 +236,6 @@ resetPuBtns.cancel.addEventListener('click', () => {
     resetPopup.classList.remove('show');
 });
 
-
-
-
-
 menuBtns.theme.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
@@ -267,7 +259,6 @@ themes.forEach(theme => {
         });
     });
 });
-
 
 
 // セットボタン押下

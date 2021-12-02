@@ -61,7 +61,7 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 999;
+    z-index: 100;
     background:#333;
     text-align:center;
     color:#fff;
@@ -213,7 +213,7 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    z-index: 2;
+    z-index: 20;
     
     &.show {
         visibility: visible;
@@ -232,7 +232,7 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     opacity: 0;
     visibility: hidden;
     transition: opacity .5s, visibility .5s, bottom 1s;
-    z-index: 4;
+    z-index: 24;
     
     &.show {
         bottom: 15vh;
@@ -277,7 +277,7 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     border-radius: 10px;
     visibility: hidden;
     opacity: 0;
-    z-index: 5;
+    z-index: 25;
     transform: translate(-50%, -50%);
     
     .grid-container {
@@ -420,7 +420,7 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
     
     &.show {
         opacity: 1;
-        z-index: 10;
+        z-index: 30;
         @include useAnimation(slideFromLeft, 2.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
     }
     
