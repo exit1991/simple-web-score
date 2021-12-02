@@ -730,6 +730,40 @@ body.theme-plum-plate {
   font-size: min(3rem, 24px);
 }
 
+.info-pu.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-animation-name: popupAndFixCenter;
+          animation-name: popupAndFixCenter;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.info-pu .grid-container {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 75% 25%;
+      grid-template-rows: 75% 25%;
+}
+
+.info-pu .btns {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+.info-pu .btns .btn.ok-btn {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
 .seltheme-body {
   display: -ms-grid;
   display: grid;
@@ -832,5 +866,9 @@ body.theme-plum-plate {
 
 .seltheme-body > .plum-plate::before {
   content: "plum-plate";
+}
+
+#about-link {
+  text-decoration: line-through;
 }
 /*# sourceMappingURL=style.css.map */

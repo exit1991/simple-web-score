@@ -371,6 +371,30 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
 }
 
 
+// info用ポップアップ
+.info-pu {
+    
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        @include useAnimation(popupAndFixCenter, 0.6s, cubic-bezier(0.22, 1, 0.36, 1), forwards, 0s, 1);
+    }
+    
+    .grid-container {
+        grid-template-columns: 1fr;
+        // grid-template-rows: 20% 55% 25%;
+        grid-template-rows: 75% 25%;
+    }
+    
+    .btns {
+        grid-template-columns: 1fr;
+        .btn.ok-btn {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    }
+    
+}
 
 
 // テーマ選択
@@ -418,5 +442,10 @@ $menu-btn-height-half: calc((#{$menu-btn-height} - 1vh) / 2);
         }
     }
     
+}
+
+
+#about-link {
+    text-decoration: line-through;
 }
 

@@ -27,24 +27,30 @@ const splashLogo  = document.querySelector('#splash-logo');
 const menuBtns = {
      reset: document.querySelector('#btn-reset')
     ,theme: document.querySelector('#btn-theme')
-    ,set: document.querySelector('#btn-set')
-    ,info: document.querySelector('#btn-info')
+    ,set:   document.querySelector('#btn-set')
+    ,info:  document.querySelector('#btn-info')
 }
 
 // ポップアップ関連要素
-const resetPopup   = document.querySelector('.reset-pu');
+const resetPopup  = document.querySelector('.reset-pu');
 const resetPuBtns = {
     ok: document.querySelector('.reset-pu .ok-btn')
    ,cancel: document.querySelector('.reset-pu .cancel-btn')
 }
 
 // ポイントセット関連要素
-const popupSetPointBody = document.querySelector('.set-pnt-pu');
-const leftIpt           = document.querySelector('#left-ipt');
-const rightIpt          = document.querySelector('#right-ipt');
-const setPntPuBtns = {
-     ok: document.querySelector('.set-pnt-pu .ok-btn')
+const popupSetPoint = document.querySelector('.set-pnt-pu');
+const leftIpt       = document.querySelector('#left-ipt');
+const rightIpt      = document.querySelector('#right-ipt');
+const setPntPuBtns  = {
+     ok:     document.querySelector('.set-pnt-pu .ok-btn')
     ,cancel: document.querySelector('.set-pnt-pu .cancel-btn')
+}
+
+// info関連要素
+const infoPopup  = document.querySelector('.info-pu');
+const infoPuBtns = {
+    ok: document.querySelector('.info-pu .ok-btn')
 }
 
 // テーマ選択関連要素
@@ -141,27 +147,11 @@ function loadThemeFromStrg() {
 const saveThemeToStrg = (themeName) => strg.setItem('theme', themeName);
 
 
-
-// フェードアウト用関数
-// function elementFadeOut(elem, duration = 1000, delayTime = 0, afterWork = () => {}) {
-//     elem.style.opacity = 1;
-//     elem.style.transition = 'opacity ' + duration + 'ms';
-//     setTimeout(() => {elem.style.opacity = 0;}, delayTime);
-//     setTimeout(() => {elem.style.display = 'none'; afterWork();}, delayTime + duration);
-// }
-
-
 /* ====================
     処理定義
 ==================== */
 
-// let splash;
-// let splashLogo;
-
 window.addEventListener('load', () => {
-    // elementFadeOut(splash, 500, 800);
-    // elementFadeOut(splashLogo, 500, 800);
-    
     const delayTime = 800;
     setTimeout(() => {
         splash.classList.add('hide');
@@ -227,7 +217,8 @@ menuMask.addEventListener('click', () => {
     menuBody.classList.remove('show');
     menuMask.classList.remove('show');
     resetPopup.classList.remove('show');
-    popupSetPointBody.classList.remove('show');
+    popupSetPoint.classList.remove('show');
+    infoPopup.classList.remove('show');
 });
 
 // リセットボタン押下
@@ -283,7 +274,7 @@ themes.forEach(theme => {
 menuBtns.set.addEventListener('click', () => {
     menuMask.classList.toggle('show');
     menuBtn.classList.toggle('active');
-    popupSetPointBody.classList.add('show');
+    popupSetPoint.classList.add('show');
     
     leftIpt.value = pointLeft.textContent;
     rightIpt.value = pointRight.textContent;
@@ -293,7 +284,7 @@ menuBtns.set.addEventListener('click', () => {
 setPntPuBtns.ok.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
-    popupSetPointBody.classList.remove('show');
+    popupSetPoint.classList.remove('show');
     
     // ポイント適用
     pointLeft.innerHTML  = isNaN(parseInt(leftIpt.value)) ? 0 : parseInt(leftIpt.value);
@@ -309,8 +300,21 @@ setPntPuBtns.ok.addEventListener('click', () => {
 setPntPuBtns.cancel.addEventListener('click', () => {
     menuMask.classList.remove('show');
     menuBtn.classList.remove('active');
-    popupSetPointBody.classList.remove('show');
+    popupSetPoint.classList.remove('show');
 });
 
 
+
+// リセットボタン押下
+menuBtns.info.addEventListener('click', () => {
+    menuMask.classList.toggle('show');
+    menuBtn.classList.toggle('active');
+    infoPopup.classList.add('show');
+});
+
+infoPuBtns.ok.addEventListener('click', () => {
+    menuMask.classList.remove('show');
+    menuBtn.classList.remove('active');
+    infoPopup.classList.remove('show');
+});
 
